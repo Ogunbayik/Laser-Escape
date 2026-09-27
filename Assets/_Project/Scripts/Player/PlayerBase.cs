@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    public PlayerInput Input;
-    public PlayerMovement Movement;
+    [HideInInspector] public PlayerInput Input;
+    [HideInInspector] public PlayerMovement Movement;
+
+    [Header("Data References")]
+    public PlayerData Data;
     private void Awake()
     {
         Input = GetComponent<PlayerInput>();

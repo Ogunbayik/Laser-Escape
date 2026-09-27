@@ -6,8 +6,6 @@ public class PlayerMovement : MonoBehaviour
     private PlayerBase _player;
     private Rigidbody _rb;
 
-    [SerializeField] private float _movementSpeed;
-
     private Vector3 _movementDirection;
 
     private void Awake()
@@ -21,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = new Vector3(input.x, 0f, input.y).normalized;
 
-        _movementDirection = direction * _movementSpeed;
+        _movementDirection = direction * _player.Data.MovementSpeed;
     }
 
     private void FixedUpdate()

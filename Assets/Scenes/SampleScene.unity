@@ -597,6 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBase
   Input: {fileID: 0}
   Movement: {fileID: 0}
+  Data: {fileID: 11400000, guid: 48c8fbdb184d99f4996546ae8df5de17, type: 2}
 --- !u!54 &1727212907
 Rigidbody:
   m_ObjectHideFlags: 0
