@@ -4,6 +4,7 @@ public class PlayerBase : MonoBehaviour
 {
     [HideInInspector] public PlayerInput Input;
     [HideInInspector] public PlayerMovement Movement;
+    [HideInInspector] public PlayerInteract Interact;
 
     [Header("Data References")]
     public PlayerData Data;
@@ -11,5 +12,6 @@ public class PlayerBase : MonoBehaviour
     {
         Input = GetComponent<PlayerInput>();
         Movement = GetComponent<PlayerMovement>();
+        Interact = GetComponentInChildren<PlayerInteract>();
     }
 }

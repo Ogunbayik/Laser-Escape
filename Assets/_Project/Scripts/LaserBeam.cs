@@ -9,18 +9,24 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] private Transform _visual;
 
     [Header("Laser Beam Settings")]
-    [SerializeField] private float maxDistance;
+    [SerializeField] private float _maxDistance;
     [SerializeField] private int _maxReflections;
+
+    [Header("Rotation Settings")]
     [SerializeField] private float _rotationDegree;
     [SerializeField] private float _rotationDuration;
+    [SerializeField] private bool _isRight;
 
     [Header("Collision Settings")]
-    [SerializeField] private LayerMask collisionMask;
+    [SerializeField] private LayerMask _collisionMask;
+    [SerializeField] private LayerMask _playerMask;
 
     private LineRenderer _lineRenderer;
     private List<Vector3> laserPoints = new List<Vector3>();
 
     private Vector3 _currentRotation;
+
+    private bool _isRotating;
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -44,7 +50,9 @@ public class LaserBeam : MonoBehaviour
 
         for (int i = 0; i < _maxReflections; i++)
         {
-            if (Physics.Raycast(currentPosition, currentDirection, out RaycastHit hit, maxDistance, collisionMask))
+            CheckPlayerOnSegment(currentPosition, currentDirection);
+
+            if (Physics.Raycast(currentPosition, currentDirection, out RaycastHit hit, _maxDistance, _collisionMask))
             {
                 // Çarpışma noktasını listeye ekle
                 laserPoints.Add(hit.point);
@@ -56,10 +64,6 @@ public class LaserBeam : MonoBehaviour
                     currentDirection = Vector3.Reflect(currentDirection, hit.normal);
                     currentPosition = hit.point; // Yeni ışın için başlangıç noktasını güncelle
                 }
-                else if(hit.collider.CompareTag("Player"))
-                {
-                    Debug.Log("Hitted Player!");
-                }
                 else
                 {
                     // Duvara veya yansıtmayan bir objeye çarptıysa lazer burada biter
@@ -69,7 +73,7 @@ public class LaserBeam : MonoBehaviour
             else
             {
                 // Hiçbir şeye çarpmadıysa maksimum mesafeye kadar düz gider ve biter
-                laserPoints.Add(currentPosition + (currentDirection * maxDistance));
+                laserPoints.Add(currentPosition + (currentDirection * _maxDistance));
                 break;
             }
         }
@@ -77,11 +81,27 @@ public class LaserBeam : MonoBehaviour
         _lineRenderer.positionCount = laserPoints.Count;
         _lineRenderer.SetPositions(laserPoints.ToArray());
     }
-    public void RotateLaser(bool isRight)
+    public void RotateLaser()
     {
-        float degree = isRight ? _rotationDegree : -_rotationDegree;
+        if (_isRotating)
+            return;
+
+        _isRotating = true;
+        float degree = _isRight ? _rotationDegree : -_rotationDegree;
         Vector3 targetRotation = _currentRotation + new Vector3(0f, degree, 0f);
 
-        _visual.transform.DORotate(targetRotation, _rotationDuration).SetEase(Ease.InOutSine).OnComplete(() => _currentRotation = targetRotation);
+        _visual.transform.DORotate(targetRotation, _rotationDuration).SetEase(Ease.InOutSine).OnComplete(() => OnRotationCompleted(targetRotation));
+    }
+    private void CheckPlayerOnSegment(Vector3 origin, Vector3 direction)
+    {
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, _maxDistance, _playerMask))
+        {
+            Debug.Log("Player is Dead!");
+        }
+    }
+    private void OnRotationCompleted(Vector3 targetRotation)
+    {
+        _currentRotation = targetRotation;
+        _isRotating = false;
     }
 }
