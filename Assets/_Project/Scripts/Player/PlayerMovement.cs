@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Visual References")]
     [SerializeField] private Transform _visual;
+
+    private bool _isMoving;
     private void Awake()
     {
         _player = GetComponent<PlayerBase>();
@@ -23,20 +25,29 @@ public class PlayerMovement : MonoBehaviour
 
         _movementDirection = direction * _player.Data.MovementSpeed;
 
+        if (direction.sqrMagnitude > 0.01f)
+            _isMoving = true;
+        else
+            _isMoving = false;
+
+        _player.AnimationController.PlayMoveAnimation(_isMoving);
+
         HandleRotation();
     }
 
     private void FixedUpdate()
     {
-        _rb.linearVelocity = new Vector3(_movementDirection.x, _rb.linearVelocity.y, _movementDirection.z);
+        if (_isMoving)
+            _rb.linearVelocity = new Vector3(_movementDirection.x, _rb.linearVelocity.y, _movementDirection.z);
     }
     private void HandleRotation()
     {
-        if (_movementDirection.sqrMagnitude > 0.01f)
+        if (_isMoving)
         {
             Quaternion targetRotation = Quaternion.LookRotation(_movementDirection, Vector3.up);
 
             _visual.transform.rotation = Quaternion.Slerp(_visual.transform.rotation, targetRotation, _player.Data.RotationSpeed * Time.deltaTime);
         }
     }
+    public void SetMovingStatus(bool isMoving) => _isMoving = isMoving;
 }

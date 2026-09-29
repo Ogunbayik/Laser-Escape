@@ -114,7 +114,8 @@ public class LaserBeam : MonoBehaviour
     {
         if (Physics.Raycast(origin, direction, out RaycastHit hit, _maxDistance, _playerMask))
         {
-            Debug.Log("Player is Dead!");
+            if (hit.transform.TryGetComponent<PlayerBase>(out PlayerBase player))
+                player.Die();
         }
     }
     private void OnRotationCompleted(Vector3 targetRotation)
