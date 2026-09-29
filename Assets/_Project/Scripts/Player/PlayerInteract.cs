@@ -9,12 +9,10 @@ public class PlayerInteract : MonoBehaviour
     {
         _player = GetComponentInParent<PlayerBase>();
     }
-
     private void Start()
     {
         _player.Input.OnPressedInteract += Input_OnPressedInteract;
     }
-
     private void Input_OnPressedInteract()
     {
         if (_targetLaserBeam == null)

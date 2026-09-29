@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class LaserBeam : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class LaserBeam : MonoBehaviour
 
     private Vector3 _currentRotation;
 
+    private ILaserTargetable _currentTarget;
     private bool _isRotating;
     private void Awake()
     {
@@ -48,9 +50,11 @@ public class LaserBeam : MonoBehaviour
 
         laserPoints.Add(currentPosition);
 
+        ILaserTargetable hitTargetThisFrame = null;
+
         for (int i = 0; i < _maxReflections; i++)
         {
-            CheckPlayerOnSegment(currentPosition, currentDirection);
+            CheckLaserSegment(currentPosition, currentDirection);
 
             if (Physics.Raycast(currentPosition, currentDirection, out RaycastHit hit, _maxDistance, _collisionMask))
             {
@@ -63,6 +67,12 @@ public class LaserBeam : MonoBehaviour
                     // Vector3.Reflect ile gelen açıyı yüzeyin normaline göre yansıt
                     currentDirection = Vector3.Reflect(currentDirection, hit.normal);
                     currentPosition = hit.point; // Yeni ışın için başlangıç noktasını güncelle
+                }
+                else if(hit.collider.TryGetComponent<ILaserTargetable>(out ILaserTargetable target))
+                {
+                    hitTargetThisFrame = target;
+                    target.HitByLaser();
+                    break;
                 }
                 else
                 {
@@ -78,6 +88,14 @@ public class LaserBeam : MonoBehaviour
             }
         }
 
+
+        if (_currentTarget != null && _currentTarget != hitTargetThisFrame)
+        {
+            _currentTarget.LaserLost();
+        }
+
+        _currentTarget = hitTargetThisFrame;
+
         _lineRenderer.positionCount = laserPoints.Count;
         _lineRenderer.SetPositions(laserPoints.ToArray());
     }
@@ -92,7 +110,7 @@ public class LaserBeam : MonoBehaviour
 
         _visual.transform.DORotate(targetRotation, _rotationDuration).SetEase(Ease.InOutSine).OnComplete(() => OnRotationCompleted(targetRotation));
     }
-    private void CheckPlayerOnSegment(Vector3 origin, Vector3 direction)
+    private void CheckLaserSegment(Vector3 origin, Vector3 direction)
     {
         if (Physics.Raycast(origin, direction, out RaycastHit hit, _maxDistance, _playerMask))
         {
