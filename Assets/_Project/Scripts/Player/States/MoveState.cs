@@ -32,6 +32,7 @@ public class MoveState : IState
     public void ExitState()
     {
         _player.Rb.linearVelocity = new Vector3(0f, _player.Rb.linearVelocity.y, 0f);
+        _player.AnimationController.PlayMoveAnimation(false);
     }
     private void HandleRotation()
     {

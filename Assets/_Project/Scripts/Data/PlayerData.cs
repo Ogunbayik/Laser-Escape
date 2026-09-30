@@ -8,4 +8,11 @@ public class PlayerData : ScriptableObject
 
     [Header("Rotation Settings")]
     public float RotationSpeed;
+
+    [Header("Material References")]
+    public Material DissolveMaterial;
+
+    [Header("Duration Settings")]
+    public float DissolveDuration;
+    public float BurnDuration;
 }

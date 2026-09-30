@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   MovementSpeed: 3.5
   RotationSpeed: 4.5
+  DissolveMaterial: {fileID: 2100000, guid: bb16701c2a97b8240bc6d0391b292a94, type: 2}
+  DissolveDuration: 0.75
+  BurnDuration: 0.25
