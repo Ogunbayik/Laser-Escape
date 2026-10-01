@@ -22,4 +22,13 @@ public static class GameConstant
         public static readonly int MOVE_HASH = Animator.StringToHash(IS_MOVING);
         public static readonly int DEAD_HASH = Animator.StringToHash(DEAD);
     }
+
+    public static class EnvironmentAnimation
+    {
+        private const string OPEN = "Open";
+        private const string CLOSE = "Close";
+
+        public static readonly int OPEN_HASH = Animator.StringToHash(OPEN);
+        public static readonly int CLOSE_HASH = Animator.StringToHash(CLOSE);
+    }
 }
