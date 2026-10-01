@@ -31,7 +31,7 @@ public class LaserBeam : MonoBehaviour
     private bool _isRotating;
     private void Awake()
     {
-        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer = GetComponentInChildren<LineRenderer>();
     }
     private void Start()
     {
@@ -46,7 +46,7 @@ public class LaserBeam : MonoBehaviour
         laserPoints.Clear();
 
         Vector3 currentPosition =  _shootPosition.position;
-        Vector3 currentDirection = transform.forward;
+        Vector3 currentDirection = _visual.transform.forward;
 
         laserPoints.Add(currentPosition);
 

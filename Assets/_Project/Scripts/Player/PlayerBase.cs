@@ -22,6 +22,9 @@ public class PlayerBase : MonoBehaviour
     public DeadState DeadState { get; private set; }
 
     [HideInInspector] public Material InstancedMaterial;
+    [HideInInspector] public float MovementSpeed;
+
+    public bool IsSprint;
     private void Awake()
     {
         Rb = GetComponent<Rigidbody>();
@@ -34,14 +37,35 @@ public class PlayerBase : MonoBehaviour
         MoveState = new MoveState(this);
         DeadState = new DeadState(this);
     }
-
     private void Start()
     {
         Initialize();
     }
+    private void OnEnable()
+    {
+        if (Input != null)
+            Input.OnSprintStateChanged += OnSprintStateChanged;
+    }
+    private void OnDisable()
+    {
+        if (Input != null)
+            Input.OnSprintStateChanged -= OnSprintStateChanged;
+    }
+    private void OnSprintStateChanged(bool isActive)
+    {
+        IsSprint = isActive;
+        MovementSpeed = isActive ? Data.SprintSpeed : Data.WalkSpeed;
+
+        if (StateController.CurrentState == MoveState)
+        {
+            AnimationController.PlaySprintAnimation(isActive);
+        }
+    }
     private void Initialize()
     {
         StateController.SwitchState(IdleState);
+        IsSprint = false;
+        MovementSpeed = Data.WalkSpeed;
 
         InitializeMaterial();
     }

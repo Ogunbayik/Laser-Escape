@@ -10,5 +10,6 @@ public class PlayerAnimationController : MonoBehaviour
     }
 
     public void PlayMoveAnimation(bool isMoving) => _animator.SetBool(GameConstant.PlayerAnimation.MOVE_HASH, isMoving);
+    public void PlaySprintAnimation(bool isSprint) => _animator.SetBool("IsSprint", isSprint);
     public void PlayDeadAnimation() => _animator.SetTrigger(GameConstant.PlayerAnimation.DEAD_HASH);
 }

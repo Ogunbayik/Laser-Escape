@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Movement Settings")]
-    public float MovementSpeed;
+    public float WalkSpeed;
+    public float SprintSpeed;
 
     [Header("Rotation Settings")]
     public float RotationSpeed;
