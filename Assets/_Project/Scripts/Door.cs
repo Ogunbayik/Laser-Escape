@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [Header("Identity Settings")]
+    [SerializeField] private int _doorID;
+
     private Animator _animator;
     private BoxCollider _collider;
 
@@ -12,7 +15,24 @@ public class Door : MonoBehaviour
         _animator = GetComponent<Animator>();
         _collider = GetComponent<BoxCollider>();
     }
+    private void OnEnable()
+    {
+        InteractionEvents.OnButtonTriggered += HandleButtonTriggered;
+    }
+    private void OnDisable()
+    {
+        InteractionEvents.OnButtonTriggered -= HandleButtonTriggered;
+    }
+    private void HandleButtonTriggered(int id, bool isActive)
+    {
+        if (id != _doorID)
+            return;
 
+        if (isActive)
+            Open();
+        else
+            Close();
+    }
     public void Open()
     {
         if (_isOpen)
@@ -29,7 +49,6 @@ public class Door : MonoBehaviour
         _isOpen = false;
         _animator.SetTrigger(GameConstant.EnvironmentAnimation.CLOSE_HASH);
     }
-
     public void EnableTrigger() => _collider.isTrigger = true;
     public void DisableTrigger() => _collider.isTrigger = false;
     

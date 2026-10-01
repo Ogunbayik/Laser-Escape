@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class Button : MonoBehaviour, ILaserTargetable
 {
-    private MeshRenderer _meshRenderer;
-
     [Header("Transform References")]
     [SerializeField] private Transform _visual;
+
+    [Header("Identity Settings")]
+    [SerializeField] private int _buttonID;
 
     [Header("Color Settings")]
     [SerializeField] private Color _defaultColor;
@@ -16,7 +17,9 @@ public class Button : MonoBehaviour, ILaserTargetable
     [SerializeField] private float _triggerOffset;
     [SerializeField] private float _triggerDuration;
 
-    
+
+    private MeshRenderer _meshRenderer;
+    private Sequence _activeSequence;
     private bool _isActive;
     private void Awake()
     {
@@ -44,16 +47,22 @@ public class Button : MonoBehaviour, ILaserTargetable
     }
     private void HandleHitLaser()
     {
-        Sequence hitSequence = DOTween.Sequence();
+        InteractionEvents.ButtonTrigger(_buttonID, true);
 
-        hitSequence.Append(_visual.transform.DOLocalMoveZ(_triggerOffset, _triggerDuration));
-        hitSequence.Join(_meshRenderer.material.DOColor(_activeColor, _triggerDuration));
+        _activeSequence?.Kill();
+        _activeSequence = DOTween.Sequence();
+
+        _activeSequence.Append(_visual.DOLocalMoveZ(_triggerOffset, _triggerDuration));
+        _activeSequence.Join(_meshRenderer.material.DOColor(_activeColor, _triggerDuration));
     }
     private void HandleLostLaser()
     {
-        Sequence lostSequence = DOTween.Sequence();
+        InteractionEvents.ButtonTrigger(_buttonID, false);
 
-        lostSequence.Append(_visual.transform.DOLocalMoveZ(0f, _triggerDuration));
-        lostSequence.Join(_meshRenderer.material.DOColor(_defaultColor, _triggerDuration));
+        _activeSequence?.Kill();
+        _activeSequence = DOTween.Sequence();
+
+        _activeSequence.Append(_visual.DOLocalMoveZ(0f, _triggerDuration));
+        _activeSequence.Join(_meshRenderer.material.DOColor(_defaultColor, _triggerDuration));
     }
 }
