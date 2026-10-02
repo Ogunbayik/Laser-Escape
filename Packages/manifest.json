@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.ob.utils": "file:C:/Users/ogun/Desktop/Unity For Games/Utils/OB_Utils",
     "com.unity.ai.navigation": "2.0.14",
     "com.unity.cinemachine": "2.10.7",
     "com.unity.collab-proxy": "2.13.6",
@@ -25,6 +26,7 @@
     "com.unity.modules.audio": "1.0.0",
     "com.unity.modules.cloth": "1.0.0",
     "com.unity.modules.director": "1.0.0",
+    "com.unity.modules.hierarchycore": "1.0.0",
     "com.unity.modules.imageconversion": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.jsonserialize": "1.0.0",
@@ -33,6 +35,7 @@
     "com.unity.modules.physics2d": "1.0.0",
     "com.unity.modules.physicscore2d": "1.0.0",
     "com.unity.modules.screencapture": "1.0.0",
+    "com.unity.modules.subsystems": "1.0.0",
     "com.unity.modules.terrain": "1.0.0",
     "com.unity.modules.terrainphysics": "1.0.0",
     "com.unity.modules.tilemap": "1.0.0",

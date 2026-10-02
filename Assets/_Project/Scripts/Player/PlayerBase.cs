@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerBase : MonoBehaviour
+public class PlayerBase : MonoBehaviour, ILaserTargetable
 {
     [HideInInspector] public Rigidbody Rb;
     [HideInInspector] public PlayerInput Input;
@@ -89,5 +89,6 @@ public class PlayerBase : MonoBehaviour
     }
     private void Update() => StateController.Tick();
     private void FixedUpdate() => StateController.FixedTick();
-    public void Die() => StateController.SwitchState(DeadState);
+    public void HitByLaser() => StateController.SwitchState(DeadState);
+    public void LaserLost() { }
 }

@@ -4,7 +4,7 @@ public class PlayerInteract : MonoBehaviour
 {
     private PlayerBase _player;
 
-    private LaserBeam _targetLaserBeam;
+    private StepLaserRotator _stepLaser;
     private void Awake()
     {
         _player = GetComponentInParent<PlayerBase>();
@@ -15,23 +15,25 @@ public class PlayerInteract : MonoBehaviour
     }
     private void Input_OnPressedInteract()
     {
-        if (_targetLaserBeam == null)
+        if (_stepLaser == null)
             return;
 
-        _targetLaserBeam.RotateLaser();
-    }
+        if (_stepLaser.Type != LaserType.StepRotatable)
+            return;
 
+        _stepLaser.RotateToNextStep();
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<LaserBeam>(out LaserBeam laserBeam))
-            _targetLaserBeam = laserBeam;
+        if (other.gameObject.TryGetComponent<StepLaserRotator>(out StepLaserRotator laser))
+            _stepLaser = laser;
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.TryGetComponent<LaserBeam>(out LaserBeam laserBeam))
+        if(other.gameObject.TryGetComponent<StepLaserRotator>(out StepLaserRotator laser))
         {
-            if (_targetLaserBeam == laserBeam)
-                _targetLaserBeam = null;
+            if (_stepLaser = laser)
+                _stepLaser = null;
         }
     }
 }
