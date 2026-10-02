@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBase : MonoBehaviour, ILaserTargetable
 {
+    public event Action<float, float> OnStaminaChanged;
+
     [HideInInspector] public Rigidbody Rb;
     [HideInInspector] public PlayerInput Input;
     [HideInInspector] public PlayerInteract Interact;
@@ -67,6 +69,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         StateController.SwitchState(IdleState);
         IsSprint = false;
         MovementSpeed = Data.WalkSpeed;
+        CurrentStamina = Data.MaxStamina;
 
         InitializeMaterial();
     }
@@ -95,25 +98,34 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
 
     public void DrainStamina(float deltaTime)
     {
+        float prev = CurrentStamina;
         CurrentStamina = Mathf.Max(0f, CurrentStamina - (Data.StaminaDrainRate * deltaTime));
 
-        if (CurrentStamina <= 0f)
-        {
+        if (CurrentStamina <= 0f) 
             IsExhausted = true;
-        } 
+
+        if (!Mathf.Approximately(prev, CurrentStamina))
+        {
+            OnStaminaChanged?.Invoke(CurrentStamina, Data.MaxStamina);
+        }   
     }
 
     public void RegenerateStamina(float deltaTime)
     {
-        if (CurrentStamina < Data.MaxStamina)
-        {
-            CurrentStamina = Mathf.Min(Data.MaxStamina, CurrentStamina + (Data.StaminaRegenRate * deltaTime));
+        if (CurrentStamina >= Data.MaxStamina) 
+            return;
 
-            float recoveryThreshold = Data.MaxStamina * 0.5f;
-            if (IsExhausted && CurrentStamina >= recoveryThreshold)
-            {
-                IsExhausted = false;
-            }
+        float prev = CurrentStamina;
+        CurrentStamina = Mathf.Min(Data.MaxStamina, CurrentStamina + (Data.StaminaRegenRate * deltaTime));
+
+        if (IsExhausted && CurrentStamina >= Data.MaxStamina * 0.5f)
+        {
+            IsExhausted = false;
+        }
+
+        if (!Mathf.Approximately(prev, CurrentStamina))
+        {
+            OnStaminaChanged?.Invoke(CurrentStamina, Data.MaxStamina);
         }
     }
 }
