@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -18,13 +19,18 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     public PlayerStateController StateController {  get; private set; }
 
     public IdleState IdleState {  get; private set; }
-    public MoveState MoveState { get; private set; }
     public DeadState DeadState { get; private set; }
+    public WalkState WalkState { get; private set; }
+    public SprintState SprintState { get; private set; }
 
     [HideInInspector] public Material InstancedMaterial;
     [HideInInspector] public float MovementSpeed;
 
+
+    public float CurrentStamina { get; private set; }
+    public bool IsExhausted { get; private set; }
     public bool IsSprint;
+    public bool CanSprint => CurrentStamina > 0f && !IsExhausted;
     private void Awake()
     {
         Rb = GetComponent<Rigidbody>();
@@ -34,8 +40,9 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
 
         StateController = new PlayerStateController();
         IdleState = new IdleState(this);
-        MoveState = new MoveState(this);
         DeadState = new DeadState(this);
+        WalkState = new WalkState(this);
+        SprintState = new SprintState(this);
     }
     private void Start()
     {
@@ -54,12 +61,6 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     private void OnSprintStateChanged(bool isActive)
     {
         IsSprint = isActive;
-        MovementSpeed = isActive ? Data.SprintSpeed : Data.WalkSpeed;
-
-        if (StateController.CurrentState == MoveState)
-        {
-            AnimationController.PlaySprintAnimation(isActive);
-        }
     }
     private void Initialize()
     {
@@ -91,4 +92,28 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     private void FixedUpdate() => StateController.FixedTick();
     public void HitByLaser() => StateController.SwitchState(DeadState);
     public void LaserLost() { }
+
+    public void DrainStamina(float deltaTime)
+    {
+        CurrentStamina = Mathf.Max(0f, CurrentStamina - (Data.StaminaDrainRate * deltaTime));
+
+        if (CurrentStamina <= 0f)
+        {
+            IsExhausted = true;
+        } 
+    }
+
+    public void RegenerateStamina(float deltaTime)
+    {
+        if (CurrentStamina < Data.MaxStamina)
+        {
+            CurrentStamina = Mathf.Min(Data.MaxStamina, CurrentStamina + (Data.StaminaRegenRate * deltaTime));
+
+            float recoveryThreshold = Data.MaxStamina * 0.5f;
+            if (IsExhausted && CurrentStamina >= recoveryThreshold)
+            {
+                IsExhausted = false;
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ public class MoveState : IState
     private Vector3 _movementDirection;
     public void EnterState()
     {
-        _player.AnimationController.PlayMoveAnimation(true);
+        _player.AnimationController.PlayWalkAnimation(true);
         _player.AnimationController.PlaySprintAnimation(_player.IsSprint);
     }
     public void Tick()
@@ -49,7 +49,7 @@ public class MoveState : IState
     public void ExitState()
     {
         _player.Rb.linearVelocity = new Vector3(0f, _player.Rb.linearVelocity.y, 0f);
-        _player.AnimationController.PlayMoveAnimation(false);
+        _player.AnimationController.PlayWalkAnimation(false);
         _player.AnimationController.PlaySprintAnimation(false);
     }
     private void HandleRotation()

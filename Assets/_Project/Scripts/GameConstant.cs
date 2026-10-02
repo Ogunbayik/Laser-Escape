@@ -17,9 +17,11 @@ public static class GameConstant
     public static class PlayerAnimation
     {
         private const string IS_MOVING = "IsMoving";
+        private const string IS_SPRINT = "IsSprint";
         private const string DEAD = "Dead";
 
         public static readonly int MOVE_HASH = Animator.StringToHash(IS_MOVING);
+        public static readonly int SPRINT_HASH = Animator.StringToHash(IS_SPRINT);
         public static readonly int DEAD_HASH = Animator.StringToHash(DEAD);
     }
 

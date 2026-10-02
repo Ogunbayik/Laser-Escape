@@ -7,14 +7,23 @@ public class IdleState : IState
     public IdleState(PlayerBase player) => _player = player;
     public void EnterState()
     {
-        _player.AnimationController.PlayMoveAnimation(false);
+        _player.AnimationController.PlayWalkAnimation(false);
     }
     public void Tick()
     {
+        _player.RegenerateStamina(Time.deltaTime);
+
         Vector2 input = _player.Input.GetPlayerInput();
         if(input != Vector2.zero)
         {
-            _player.StateController.SwitchState(_player.MoveState);
+            if (_player.IsSprint && _player.CanSprint)
+            {
+                _player.StateController.SwitchState(_player.SprintState);
+            }
+            else
+            {
+                _player.StateController.SwitchState(_player.WalkState);
+            }
         }
     }
     public void FixedTick() { }

@@ -16,4 +16,9 @@ public class PlayerData : ScriptableObject
     [Header("Duration Settings")]
     public float DissolveDuration;
     public float BurnDuration;
+
+    [Header("Stamina Settings")]
+    public float MaxStamina = 100f;
+    public float StaminaDrainRate = 30f;
+    public float StaminaRegenRate = 20f;
 }
