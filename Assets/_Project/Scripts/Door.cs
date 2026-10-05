@@ -6,14 +6,15 @@ public class Door : MonoBehaviour
     [Header("Identity Settings")]
     [SerializeField] private int _doorID;
 
+    [Header("Collider References")]
+    [SerializeField] private BoxCollider _postCollider;
+
     private Animator _animator;
-    private BoxCollider _collider;
 
     private bool _isOpen = false;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _collider = GetComponent<BoxCollider>();
     }
     private void OnEnable()
     {
@@ -39,6 +40,7 @@ public class Door : MonoBehaviour
             return;
 
         _isOpen = true;
+        EnableTrigger();
         _animator.SetTrigger(GameConstant.EnvironmentAnimation.OPEN_HASH);
     }
     public void Close()
@@ -47,9 +49,11 @@ public class Door : MonoBehaviour
             return;
 
         _isOpen = false;
+        DisableTrigger();
         _animator.SetTrigger(GameConstant.EnvironmentAnimation.CLOSE_HASH);
     }
-    public void EnableTrigger() => _collider.isTrigger = true;
-    public void DisableTrigger() => _collider.isTrigger = false;
+
+    public void EnableTrigger() => _postCollider.isTrigger = true;
+    public void DisableTrigger() => _postCollider.isTrigger = false;
     
 }
