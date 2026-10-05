@@ -4,7 +4,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [Header("Identity Settings")]
-    [SerializeField] private int _doorID;
+    [SerializeField] private int _interactionID;
 
     [Header("Collider References")]
     [SerializeField] private BoxCollider _postCollider;
@@ -26,7 +26,7 @@ public class Door : MonoBehaviour
     }
     private void HandleButtonTriggered(int id, bool isActive)
     {
-        if (id != _doorID)
+        if (id != _interactionID)
             return;
 
         if (isActive)

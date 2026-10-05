@@ -22,6 +22,8 @@ public class LaserBeam : MonoBehaviour
     private readonly HashSet<ILaserTargetable> _currentTargets = new HashSet<ILaserTargetable>();
     private readonly HashSet<ILaserTargetable> _previousTargets = new HashSet<ILaserTargetable>();
 
+    public LineRenderer LineRenderer => _lineRenderer;
+
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -49,24 +51,25 @@ public class LaserBeam : MonoBehaviour
 
         for (int i = 0; i < _maxReflections; i++)
         {
-            if (remainingDistance <= 0f) break;
+            if (remainingDistance <= 0f) 
+                break;
 
-            // Segment üstündeki Target'ları tara (Player vb.)
-            CheckTargetsOnSegment(currentPosition, currentDirection, remainingDistance);
+            bool hasBlocker = Physics.Raycast(currentPosition, currentDirection, out RaycastHit hit, remainingDistance, _blockerMask);
+            float segmentCheckDistance = hasBlocker ? hit.distance : remainingDistance;
+
+            CheckTargetsOnSegment(currentPosition, currentDirection, segmentCheckDistance   );
 
             // Blocker (Wall / Mirror) var mı?
-            if (Physics.Raycast(currentPosition, currentDirection, out RaycastHit hit, remainingDistance, _blockerMask))
+            if (hasBlocker)
             {
                 _laserPoints.Add(hit.point);
                 remainingDistance -= hit.distance;
 
-                // Engelin kendisi de bir target ise (örneğin kırılabilir duvar)
                 if (hit.collider.TryGetComponent(out ILaserTargetable target))
                 {
                     RegisterTarget(target);
                 }
 
-                // 3) Mirror varsa reflect at
                 if (hit.collider.CompareTag("Mirror"))
                 {
                     currentDirection = Vector3.Reflect(currentDirection, hit.normal);
@@ -74,13 +77,11 @@ public class LaserBeam : MonoBehaviour
                 }
                 else
                 {
-                    // 2) Wall gibi engel varsa ışın burada kalır
                     break;
                 }
             }
             else
             {
-                // Engel yoksa maksimum mesafeye ulaşıp biter
                 _laserPoints.Add(currentPosition + (currentDirection * remainingDistance));
                 break;
             }

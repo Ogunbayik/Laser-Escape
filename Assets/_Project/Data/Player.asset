@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d55c22ab2b4d944adee8993e5a228f, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  WalkSpeed: 2
+  WalkSpeed: 3
   SprintSpeed: 5
   RotationSpeed: 270
   DissolveMaterial: {fileID: 2100000, guid: bb16701c2a97b8240bc6d0391b292a94, type: 2}
   DissolveDuration: 0.75
   BurnDuration: 0.25
+  MaxStamina: 100
+  StaminaDrainRate: 20
+  StaminaRegenRate: 10

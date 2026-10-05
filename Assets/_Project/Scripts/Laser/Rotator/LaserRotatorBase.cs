@@ -7,9 +7,9 @@ public abstract class LaserRotatorBase : MonoBehaviour
 
     [Header("Transform References")]
     [SerializeField] protected Transform Head;
-
+    protected LaserBeam LaserBeam;
     public bool IsRotating;
-
+    private void Awake() => LaserBeam = GetComponentInChildren<LaserBeam>();
     protected virtual void Update()
     {
         if(IsRotating)
