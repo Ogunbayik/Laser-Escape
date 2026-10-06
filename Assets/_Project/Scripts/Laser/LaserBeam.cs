@@ -57,7 +57,7 @@ public class LaserBeam : MonoBehaviour
             bool hasBlocker = Physics.Raycast(currentPosition, currentDirection, out RaycastHit hit, remainingDistance, _blockerMask);
             float segmentCheckDistance = hasBlocker ? hit.distance : remainingDistance;
 
-            CheckTargetsOnSegment(currentPosition, currentDirection, segmentCheckDistance   );
+            CheckTargetsOnSegment(currentPosition, currentDirection, segmentCheckDistance);
 
             // Blocker (Wall / Mirror) var mı?
             if (hasBlocker)
@@ -132,5 +132,9 @@ public class LaserBeam : MonoBehaviour
             target?.LaserLost();
         }
         _currentTargets.Clear();
+        _previousTargets.Clear();
+
+        if (_lineRenderer != null)
+            _lineRenderer.positionCount = 0;
     }
 }

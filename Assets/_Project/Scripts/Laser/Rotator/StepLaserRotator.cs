@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class StepLaserRotator : LaserRotatorBase
+public class StepLaserRotator : BaseLaserRotator
 {
     [Header("Rotation Settings")]
-    [SerializeField] private float _stepAngle = 90f;
-    [SerializeField] private float _rotateSpeed = 360f;
+    [SerializeField] private float _stepAngle;
+    [SerializeField] private float _rotateSpeed;
 
     private Quaternion _targetQuaternion;
-
-    private void Start()
+    protected override void Start()
     {
         IsRotating = false;
-        _targetQuaternion = Head.transform.localRotation;
+        _rotationType = LaserRotationType.StepRotatable;
+        _targetQuaternion = _laser.Head.transform.localRotation;
     }
     public void RotateToNextStep()
     {
@@ -23,15 +23,15 @@ public class StepLaserRotator : LaserRotatorBase
     }
     protected override void HandleRotation()
     {
-        Head.transform.localRotation = Quaternion.RotateTowards(
-            Head.transform.localRotation,
+        _laser.Head.transform.localRotation = Quaternion.RotateTowards(
+            _laser.Head.transform.localRotation,
             _targetQuaternion,
             _rotateSpeed * Time.deltaTime
         );
 
-        if (Quaternion.Angle(Head.transform.localRotation, _targetQuaternion) < 0.01f)
+        if (Quaternion.Angle(_laser.Head.transform.localRotation, _targetQuaternion) < 0.01f)
         {
-            Head.transform.localRotation = _targetQuaternion;
+            _laser.Head.transform.localRotation = _targetQuaternion;
             IsRotating = false;
         }
     }

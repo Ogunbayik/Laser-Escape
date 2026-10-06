@@ -18,7 +18,7 @@ public class PlayerInteract : MonoBehaviour
         if (_stepLaser == null)
             return;
 
-        if (_stepLaser.Type != LaserType.StepRotatable)
+        if (_stepLaser.RotationType != LaserRotationType.StepRotatable)
             return;
 
         _stepLaser.RotateToNextStep();

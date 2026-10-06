@@ -55,33 +55,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 69009957464603971, guid: b6649aee7d3b7574a829fcb6a922f9e4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 784033707626629769}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6649aee7d3b7574a829fcb6a922f9e4, type: 3}
---- !u!4 &1157093128481164414 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 316178404287469088, guid: b6649aee7d3b7574a829fcb6a922f9e4, type: 3}
-  m_PrefabInstance: {fileID: 1472000349112769118}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1484134764263401245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 69009957464603971, guid: b6649aee7d3b7574a829fcb6a922f9e4, type: 3}
-  m_PrefabInstance: {fileID: 1472000349112769118}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &784033707626629769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484134764263401245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb42d14300c5d6c488a4a0632621260b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StaticLaserRotator
-  Type: 0
-  Head: {fileID: 1157093128481164414}
-  IsRotating: 0

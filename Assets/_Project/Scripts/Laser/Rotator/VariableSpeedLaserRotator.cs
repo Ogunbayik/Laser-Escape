@@ -1,7 +1,7 @@
 using UnityEngine;
 using OB.Utils;
 
-public class VariableSpeedLaserRotator : LaserRotatorBase
+public class VariableSpeedLaserRotator : BaseLaserRotator
 {
     [Header("Rotation Settings")]
     [SerializeField] private float _firstSpeed;
@@ -16,12 +16,14 @@ public class VariableSpeedLaserRotator : LaserRotatorBase
 
     private bool _isFirstSpeedActive;
 
-    private void Start()
+    protected override void Start()
     {
-        IsRotating = true;
+        base.Start();
+
+        _rotationType = LaserRotationType.VariableSpeed;
         _isFirstSpeedActive = true;
         _currentRotationSpeed = _firstSpeed;
-
+        IsRotating = true;
         ResetIntervalTime();
     }
     protected override void Update()
@@ -36,7 +38,7 @@ public class VariableSpeedLaserRotator : LaserRotatorBase
     protected override void HandleRotation()
     {
         var rotation = _currentRotationSpeed * Time.deltaTime;
-        Head.transform.Rotate(Vector3.up * rotation);
+        _laser.Head.transform.Rotate(Vector3.up * rotation);
     }
     private void HandleCountdownInterval()
     {
