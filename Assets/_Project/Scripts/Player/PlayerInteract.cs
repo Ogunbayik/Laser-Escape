@@ -4,6 +4,7 @@ public class PlayerInteract : MonoBehaviour
 {
     private PlayerBase _player;
 
+
     private StepLaserRotator _stepLaser;
     private void Awake()
     {

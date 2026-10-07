@@ -11,9 +11,12 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private CinemachineBrain _brain;
 
 
-    [Header("Camera References")]
+    [Header("General Camera References")]
     public CinemachineVirtualCamera _gamePlayerCam;
     public CinemachineVirtualCamera _spawnCam;
+
+    [Header("Player Camera References")]
+    public CinemachineVirtualCamera _passCam;
     private void Awake()
     {
         if (Instance == null)
@@ -34,20 +37,20 @@ public class CameraManager : MonoBehaviour
         await UniTask.Yield(PlayerLoopTiming.Update, this.GetCancellationTokenOnDestroy());
 
         await UniTask.WaitWhile(() => _brain.IsBlending, cancellationToken: this.GetCancellationTokenOnDestroy());
-
-        SwitchCamera(CameraType.Gameplay);
-        Debug.Log("Current Camera is Gameplay");
     }
-    private void SwitchCamera(CameraType type)
+    public void SwitchCamera(CameraType type)
     {
-        _gamePlayerCam.Priority = 1;
-        _spawnCam.Priority = 1;
+        _gamePlayerCam.Priority = GameConstant.CameraPriority.DEACTIVE_PRIORITY;
+        _spawnCam.Priority = GameConstant.CameraPriority.DEACTIVE_PRIORITY;
+        _passCam.Priority = GameConstant.CameraPriority.DEACTIVE_PRIORITY;
 
         switch(type)
         {
-            case CameraType.Gameplay: _gamePlayerCam.Priority = 10;
+            case CameraType.Gameplay: _gamePlayerCam.Priority = GameConstant.CameraPriority.ACTIVE_PRIORITY;
                 break;
-            case CameraType.Spawn: _spawnCam.Priority = 10;
+            case CameraType.Spawn: _spawnCam.Priority = GameConstant.CameraPriority.ACTIVE_PRIORITY;
+                break;
+            case CameraType.Pass: _passCam.Priority = GameConstant.CameraPriority.ACTIVE_PRIORITY;
                 break;
         }
     }
@@ -57,5 +60,6 @@ public class CameraManager : MonoBehaviour
 public enum CameraType
 {
     Gameplay,
-    Spawn
+    Spawn,
+    Pass
 }

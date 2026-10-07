@@ -3,13 +3,14 @@ using UnityEngine;
 public class TimeableLaser : BaseLaserController
 {
     [Header("Duration Settings")]
-    [SerializeField] private float _toggleDuration;
-    private float _currentTime;
+    [SerializeField] private float _activeDuration;
+    [SerializeField] private float _deactiveDuration;
 
+    private float _currentTime;
     protected override void Start()
     {
         base.Start();
-        ResetTimer();
+        SetTimer();
     }
     private void Update() => HandleCountdownTimer();
     private void HandleCountdownTimer()
@@ -19,8 +20,8 @@ public class TimeableLaser : BaseLaserController
         if(_currentTime <= 0)
         {
             SetActiveState(!IsActive);
-            ResetTimer();
+            SetTimer();
         }
     }
-    private void ResetTimer() => _currentTime = _toggleDuration;
+    private void SetTimer() => _currentTime = IsActive ? _activeDuration : _deactiveDuration;
 }

@@ -96,7 +96,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
             renderer.material = InstancedMaterial;
         }
 
-        InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.ShaderValue.MaxValue);
+        InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.ShaderValue.MAX_VALUE);
     }
     private void Update() => StateController.Tick();
     private void FixedUpdate() => StateController.FixedTick();

@@ -30,14 +30,14 @@ public class DeadState : IState
         if (_player.InstancedMaterial == null)
             return;
 
-        _player.InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.ShaderValue.MaxValue);
+        _player.InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.ShaderValue.MAX_VALUE);
         Color targetColor = Color.black;
 
         Sequence deathSeq = DOTween.Sequence();
 
-        deathSeq.Append(_player.InstancedMaterial.DOColor(targetColor, GameConstant.ShaderProperties.ColorID, _player.Data.BurnDuration));
+        deathSeq.Append(_player.InstancedMaterial.DOColor(targetColor, GameConstant.ShaderProperties.BaseColorID, _player.Data.BurnDuration));
 
-        deathSeq.Append(_player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MinValue, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration));
+        deathSeq.Append(_player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MIN_VALUE, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration));
 
         deathSeq.OnComplete(() => {
             HandleSpawnEffect().Forget();
@@ -48,11 +48,12 @@ public class DeadState : IState
         await CameraManager.Instance.MoveCameraToRespawnPoint();
 
         //PlayerSpawn pozisyonu değişecek
+        CameraManager.Instance.SwitchCamera(CameraType.Gameplay);
         _player.transform.position = _player.RespawnPosition.position;
         _player.Visual.rotation = Quaternion.identity;
 
-        _player.InstancedMaterial.SetColor(GameConstant.ShaderProperties.ColorID, Color.white);
-        await _player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MaxValue, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration).AsyncWaitForCompletion();
+        _player.InstancedMaterial.SetColor(GameConstant.ShaderProperties.BaseColorID, Color.white);
+        await _player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MAX_VALUE, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration).AsyncWaitForCompletion();
 
         //Tekrardan kontrol edilebilir olacak
         _player.AnimationController.PlayStandUpAnimation();

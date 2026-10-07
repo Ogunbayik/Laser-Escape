@@ -2,16 +2,22 @@ using UnityEngine;
 
 public static class GameConstant
 {
+    public static class CameraPriority
+    {
+        public static readonly int ACTIVE_PRIORITY = 10;
+        public static readonly int DEACTIVE_PRIORITY = 1;
+    }
     public static class ShaderProperties
     {
         public static readonly int DissolveID = Shader.PropertyToID("_DissolveThreshold");
-        public static readonly int ColorID = Shader.PropertyToID("_BaseColor");
+        public static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+        public static readonly int EmissionID = Shader.PropertyToID("_EmissionColor");
     }
 
     public static class ShaderValue
     {
-        public static readonly float MinValue = 0f;
-        public static readonly float MaxValue = 1f;
+        public static readonly float MIN_VALUE = 0f;
+        public static readonly float MAX_VALUE = 1f;
     }
 
     public static class PlayerAnimation
