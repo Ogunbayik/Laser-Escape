@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerBase : MonoBehaviour, ILaserTargetable
 {
     public event Action<float, float> OnStaminaChanged;
+    public event Action OnPlayerDied;
+
+    public Transform RespawnPosition;
 
     [HideInInspector] public Rigidbody Rb;
     [HideInInspector] public PlayerInput Input;
@@ -54,11 +57,15 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     {
         if (Input != null)
             Input.OnSprintStateChanged += OnSprintStateChanged;
+
+        AnimationController.OnPlayerSpawned += ReturnToIdle;
     }
     private void OnDisable()
     {
         if (Input != null)
             Input.OnSprintStateChanged -= OnSprintStateChanged;
+
+        AnimationController.OnPlayerSpawned -= ReturnToIdle;
     }
     private void OnSprintStateChanged(bool isActive)
     {
@@ -93,7 +100,11 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     }
     private void Update() => StateController.Tick();
     private void FixedUpdate() => StateController.FixedTick();
-    public void HitByLaser() => StateController.SwitchState(DeadState);
+    public void HitByLaser()
+    {
+        OnPlayerDied?.Invoke();
+        StateController.SwitchState(DeadState);
+    }
     public void LaserLost() { }
 
     public void DrainStamina(float deltaTime)
@@ -128,4 +139,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
             OnStaminaChanged?.Invoke(CurrentStamina, Data.MaxStamina);
         }
     }
+    public void ResetStamina() => CurrentStamina = Data.MaxStamina;
+
+    public void ReturnToIdle() => StateController.SwitchState(IdleState);
 }

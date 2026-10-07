@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -39,7 +40,21 @@ public class DeadState : IState
         deathSeq.Append(_player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MinValue, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration));
 
         deathSeq.OnComplete(() => {
-            Debug.Log("Dead");
+            HandleSpawnEffect().Forget();
         });
+    }
+    private async UniTask HandleSpawnEffect()
+    {
+        await CameraManager.Instance.MoveCameraToRespawnPoint();
+
+        //PlayerSpawn pozisyonu değişecek
+        _player.transform.position = _player.RespawnPosition.position;
+        _player.Visual.rotation = Quaternion.identity;
+
+        _player.InstancedMaterial.SetColor(GameConstant.ShaderProperties.ColorID, Color.white);
+        await _player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MaxValue, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration).AsyncWaitForCompletion();
+
+        //Tekrardan kontrol edilebilir olacak
+        _player.AnimationController.PlayStandUpAnimation();
     }
 }

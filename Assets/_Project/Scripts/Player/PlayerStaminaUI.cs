@@ -28,19 +28,25 @@ public class PlayerStaminaUI : MonoBehaviour
         if (_player != null)
         {
             _player.OnStaminaChanged += HandleStaminaChanged;
+            _player.OnPlayerDied += HideStaminaBar;
         }
     }
-
     private void OnDisable()
     {
         if (_player != null)
         {
             _player.OnStaminaChanged -= HandleStaminaChanged;
+            _player.OnPlayerDied -= HideStaminaBar;
         }
 
         _fadeTween?.Kill();
     }
-
+    private void HideStaminaBar() => _canvasGroup.DOFade(0f, _fadeDuration).OnComplete(() => ResetStamina());
+    private void ResetStamina()
+    {
+        _staminaFillImage.fillAmount = 1f;
+        _player.ResetStamina();
+    }
     private void Start()
     {
         if (_player != null)
@@ -54,7 +60,6 @@ public class PlayerStaminaUI : MonoBehaviour
             }
         }
     }
-
     private void HandleStaminaChanged(float current, float max)
     {
         float ratio = current / max;
