@@ -57,5 +57,6 @@ public class DeadState : IState
 
         //Tekrardan kontrol edilebilir olacak
         _player.AnimationController.PlayStandUpAnimation();
+        _player.SetDeadStatus(false);
     }
 }

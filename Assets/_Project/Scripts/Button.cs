@@ -29,7 +29,7 @@ public class Button : MonoBehaviour, ILaserTargetable
     {
         _meshRenderer.material.color = _defaultColor;
     }
-    public void HitByLaser()
+    public void HitByLaser(Vector3 hitPoint, Vector3 hitNormal)
     {
         if (_isActive)
             return;

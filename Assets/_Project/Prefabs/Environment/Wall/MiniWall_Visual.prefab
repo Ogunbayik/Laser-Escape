@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 380691294298093932}
   - component: {fileID: 8916244444273857359}
   - component: {fileID: 2960316121447041092}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: MiniWall_Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7eaedf131db0c8740823c3e5ce90a76c, type: 2}
   - {fileID: 2100000, guid: 330bcfcd6a1829f4b9143863a971e374, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

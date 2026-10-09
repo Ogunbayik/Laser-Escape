@@ -236,9 +236,13 @@ MonoBehaviour:
   _blockerMask:
     serializedVersion: 2
     m_Bits: 64
+  _sparkableMask:
+    serializedVersion: 2
+    m_Bits: 256
   _interactableMask:
     serializedVersion: 2
     m_Bits: 128
+  _continuousSparkPrefab: {fileID: 9220838921757289494, guid: 38ed151e52fa9ac4884c65f42cae3186, type: 3}
 --- !u!120 &5473265597747885788
 LineRenderer:
   serializedVersion: 3

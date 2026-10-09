@@ -34,6 +34,8 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     public bool IsExhausted { get; private set; }
     public bool IsSprint;
     public bool CanSprint => CurrentStamina > 0f && !IsExhausted;
+
+    private bool _isDead;
     private void Awake()
     {
         Rb = GetComponent<Rigidbody>();
@@ -98,8 +100,15 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     }
     private void Update() => StateController.Tick();
     private void FixedUpdate() => StateController.FixedTick();
-    public void HitByLaser()
+    public void HitByLaser(Vector3 hitPoint, Vector3 hitNormal)
     {
+        if (_isDead)
+            return;
+
+        SetDeadStatus(true);
+
+        VFXManager.Instance?.PlayOneShotImpact(hitPoint, hitNormal);
+
         OnPlayerDied?.Invoke();
         StateController.SwitchState(DeadState);
     }
@@ -138,6 +147,6 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         }
     }
     public void ResetStamina() => CurrentStamina = Data.MaxStamina;
-
+    public void SetDeadStatus(bool isDead) => _isDead = isDead;
     public void ReturnToIdle() => StateController.SwitchState(IdleState);
 }
