@@ -8,8 +8,6 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     public event Action<float, float> OnStaminaChanged;
     public event Action OnPlayerDied;
 
-    public Transform RespawnPosition;
-
     [HideInInspector] public Rigidbody Rb;
     [HideInInspector] public PlayerInput Input;
     [HideInInspector] public PlayerInteract Interact;

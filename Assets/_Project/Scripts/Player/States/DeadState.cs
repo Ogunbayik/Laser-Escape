@@ -49,7 +49,7 @@ public class DeadState : IState
 
         //PlayerSpawn pozisyonu değişecek
         CameraManager.Instance.SwitchCamera(CameraType.Gameplay);
-        _player.transform.position = _player.RespawnPosition.position;
+        _player.transform.position = CheckPointManager.Instance.CurrentCheckPoint.SpawnPosition.position;
         _player.Visual.rotation = Quaternion.identity;
 
         _player.InstancedMaterial.SetColor(GameConstant.ShaderProperties.BaseColorID, Color.white);

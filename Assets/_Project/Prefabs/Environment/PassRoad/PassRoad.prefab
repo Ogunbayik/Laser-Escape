@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b63bb7a7e3e4154dbb43e3f727b8312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassRoad
+  RoomID: 0
 --- !u!1001 &334000239366581531
 PrefabInstance:
   m_ObjectHideFlags: 0

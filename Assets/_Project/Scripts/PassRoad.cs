@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PassRoad : MonoBehaviour
 {
+    [Header("Identity Settings")]
+    public int NextRoomID;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -9,6 +11,7 @@ public class PassRoad : MonoBehaviour
         {
             //Player enter the pass Road
             CameraManager.Instance.SwitchCamera(CameraType.Pass);
+            GameEvents.TriggerRoomTransition(NextRoomID);
         }
     }
 
