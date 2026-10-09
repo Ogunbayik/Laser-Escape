@@ -17,12 +17,20 @@ public class CameraManager : MonoBehaviour
 
     [Header("Player Camera References")]
     public CinemachineVirtualCamera _passCam;
+
+    private CinemachineTransposer _spawnTransposer;
+    private CinemachineTransposer _passTransposer;
+    private CinemachineComposer _passComposer;
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+
+        _spawnTransposer = _spawnCam.GetCinemachineComponent<CinemachineTransposer>();
+        _passTransposer = _passCam.GetCinemachineComponent<CinemachineTransposer>();
+        _passComposer = _passCam.GetCinemachineComponent<CinemachineComposer>();
     }
     private void Start()
     {
@@ -53,6 +61,20 @@ public class CameraManager : MonoBehaviour
             case CameraType.Pass: _passCam.Priority = GameConstant.CameraPriority.ACTIVE_PRIORITY;
                 break;
         }
+    }
+    public void SetSpawnCameraOffset(Vector3 offset) => _spawnTransposer.m_FollowOffset = offset;
+    public void FocusSpawnCameraOnCheckpoint(CheckPoint nextCheckPoint)
+    {
+        _spawnCam.m_Follow = nextCheckPoint.SpawnPosition;
+        _spawnCam.m_LookAt = nextCheckPoint.SpawnPosition;
+    }
+    public void SetPassCameraOffsetAndAim(Vector3 offset, Vector3 aimOffset)
+    {
+        if (_passTransposer != null)
+            _passTransposer.m_FollowOffset = offset;
+
+        if (_passComposer != null)
+            _passComposer.m_TrackedObjectOffset = aimOffset;
     }
 }
 

@@ -15,7 +15,12 @@ public class CheckPointManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    private void Start() => SetCheckPoint(_initialCheckPoint);
+    private void Start() => Initialize();
+    private void Initialize()
+    {
+        SetCheckPoint(_initialCheckPoint);
+        CameraManager.Instance.SetSpawnCameraOffset(_initialCheckPoint.OffsetSpawnCam);
+    }
     public void SetCheckPoint(CheckPoint nextCheckPoint)
     {
         if (nextCheckPoint == null)
@@ -28,5 +33,8 @@ public class CheckPointManager : MonoBehaviour
             return;
 
         CurrentCheckPoint = nextCheckPoint;
+
+        CameraManager.Instance.FocusSpawnCameraOnCheckpoint(CurrentCheckPoint);
+        CameraManager.Instance.SetSpawnCameraOffset(CurrentCheckPoint.OffsetSpawnCam);
     }
 }
