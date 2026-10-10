@@ -5,7 +5,7 @@ public class VFXManager : MonoBehaviour
     public static VFXManager Instance { get; private set; }
 
     [Header("Impact Prefabs")]
-    [SerializeField] private ParticleSystem _oneShotSparkPrefab;
+    [SerializeField] private ParticleSystem _sparkPrefab;
 
     private void Awake()
     {
@@ -20,9 +20,9 @@ public class VFXManager : MonoBehaviour
     }
     public void PlayOneShotImpact(Vector3 point, Vector3 normal)
     {
-        if (_oneShotSparkPrefab == null) return;
+        if (_sparkPrefab == null) return;
 
-        ParticleSystem spark = Instantiate(_oneShotSparkPrefab, point, Quaternion.LookRotation(normal));
+        ParticleSystem spark = Instantiate(_sparkPrefab, point, Quaternion.LookRotation(normal));
         spark.Play();
 
         Destroy(spark.gameObject, spark.main.duration + spark.main.startLifetime.constantMax);
