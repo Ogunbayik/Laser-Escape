@@ -2918,7 +2918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434545195591630865, guid: 74b007a693128af4d97a374cd4cadd44, type: 3}
       propertyPath: m_Name
-      value: Wall03 (2)
+      value: Wall07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4037,14 +4037,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1189087321}
   - {fileID: 1697002222}
   - {fileID: 1161664138}
   - {fileID: 1095601968}
-  - {fileID: 1523765838}
-  - {fileID: 627454044}
   - {fileID: 1351600362}
+  - {fileID: 1189087321}
   - {fileID: 1204602103}
+  - {fileID: 627454044}
+  - {fileID: 1523765838}
   m_Father: {fileID: 521960668}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &990293111
@@ -4887,7 +4887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434545195591630865, guid: 74b007a693128af4d97a374cd4cadd44, type: 3}
       propertyPath: m_Name
-      value: Wall01
+      value: Wall05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4957,7 +4957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434545195591630865, guid: 74b007a693128af4d97a374cd4cadd44, type: 3}
       propertyPath: m_Name
-      value: Wall04 (1)
+      value: Wall06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6499,7 +6499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434545195591630865, guid: 74b007a693128af4d97a374cd4cadd44, type: 3}
       propertyPath: m_Name
-      value: Wall03 (1)
+      value: Wall08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7031,7 +7031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434545195591630865, guid: 74b007a693128af4d97a374cd4cadd44, type: 3}
       propertyPath: m_Name
-      value: Wall01 (1)
+      value: Wall01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8780,6 +8780,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5197186598435842491, guid: 62989bb6b86f77e488d4d202ab5a7fdc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.228932
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197186598435842491, guid: 62989bb6b86f77e488d4d202ab5a7fdc, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4037736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197186598435842491, guid: 62989bb6b86f77e488d4d202ab5a7fdc, type: 3}
+      propertyPath: m_Color.r
+      value: 0.05409043
+      objectReference: {fileID: 0}
     - target: {fileID: 5273560927780598306, guid: 62989bb6b86f77e488d4d202ab5a7fdc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -9068,6 +9080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.358547
       objectReference: {fileID: 0}
+    - target: {fileID: 8601653105751060161, guid: 62989bb6b86f77e488d4d202ab5a7fdc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dae5a5c1bc129fd47a224a55c7630ec5, type: 3}
     - target: {fileID: 8736015217329717126, guid: 62989bb6b86f77e488d4d202ab5a7fdc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 62.30192
