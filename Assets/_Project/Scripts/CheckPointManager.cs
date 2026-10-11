@@ -7,7 +7,7 @@ public class CheckPointManager : MonoBehaviour
     [Header("Check Point References")]
     [SerializeField] private CheckPoint _initialCheckPoint;
     
-    [HideInInspector] public CheckPoint CurrentCheckPoint;
+    public CheckPoint CurrentCheckPoint;
     private void Awake()
     {
         if (Instance == null)
@@ -20,6 +20,8 @@ public class CheckPointManager : MonoBehaviour
     {
         SetCheckPoint(_initialCheckPoint);
         CameraManager.Instance.SetSpawnCameraOffset(_initialCheckPoint.OffsetSpawnCam);
+
+        _initialCheckPoint.PlantGroup.ActivatePlants();
     }
     public void SetCheckPoint(CheckPoint nextCheckPoint)
     {
