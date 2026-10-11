@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9f02553e6461554f9a742b9923784e4, type: 2}
+  - {fileID: 2100000, guid: 10f4d443b78d9fa4ba14ae58c1f7dffb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,8 +260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassRoad
   NextRoomID: 4
-  OffsetPassCam: {x: 0, y: 4, z: -4}
-  OffsetAimPassCam: {x: -2, y: 0, z: 0}
+  _offsetPassCamRight: {x: 0, y: 0, z: 0}
+  _aimPassCamRight: {x: 0, y: 0, z: 0}
+  _offsetPassCamLeft: {x: 0, y: 0, z: 0}
+  _aimPassCamLeft: {x: 0, y: 0, z: 0}
 --- !u!1001 &334000239366581531
 PrefabInstance:
   m_ObjectHideFlags: 0
