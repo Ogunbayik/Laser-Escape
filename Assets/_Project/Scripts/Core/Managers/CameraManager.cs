@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    private const float MOVE_DURATION = 0.5f;
+
     public static CameraManager Instance;
 
     [Header("Brain References")]
@@ -38,7 +40,7 @@ public class CameraManager : MonoBehaviour
     }
     public async UniTask MoveCameraToRespawnPoint()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken: this.GetCancellationTokenOnDestroy());
+        await UniTask.Delay(TimeSpan.FromSeconds(MOVE_DURATION), cancellationToken: this.GetCancellationTokenOnDestroy());
 
         SwitchCamera(CameraType.Spawn);
 

@@ -36,7 +36,6 @@ public class CheckPoint : MonoBehaviour
         if (nextRoomID != _checkPointID)
             return;
 
-        Debug.Log("Changed checkpoint!");
         CheckPointManager.Instance.SetCheckPoint(this);
     }
 }

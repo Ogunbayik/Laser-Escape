@@ -23,12 +23,10 @@ public class PassRoad : MonoBehaviour
 
             if (sideCheck > 0)
             {
-                Debug.Log("Sağ taraftan girildi.");
                 ApplyPassCameraSettings(_offsetPassCamRight, _aimPassCamRight);
             }
             else
             {
-                Debug.Log("Sol taraftan girildi.");
                 ApplyPassCameraSettings(_offsetPassCamLeft, _aimPassCamLeft);
             }
 

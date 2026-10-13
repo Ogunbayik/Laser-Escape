@@ -17,13 +17,11 @@ public static class GameConstant
         public static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
         public static readonly int EmissionID = Shader.PropertyToID("_EmissionColor");
     }
-
-    public static class ShaderValue
+    public static class MathConstant
     {
-        public static readonly float MIN_VALUE = 0f;
-        public static readonly float MAX_VALUE = 1f;
+        public static readonly float NORMALIZED_MIN = 0f;
+        public static readonly float NORMALIZED_MAX = 1f;
     }
-
     public static class PlayerAnimation
     {
         private const string IS_MOVING = "IsMoving";

@@ -11,6 +11,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     [HideInInspector] public Rigidbody Rb;
     [HideInInspector] public PlayerInput Input;
     [HideInInspector] public PlayerInteract Interact;
+    [HideInInspector] public PlayerInteractView InteractView;
     [HideInInspector] public PlayerAnimationController AnimationController;
 
     [Header("Data References")]
@@ -41,6 +42,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         Rb = GetComponent<Rigidbody>();
         Input = GetComponent<PlayerInput>();
         Interact = GetComponentInChildren<PlayerInteract>();
+        InteractView = GetComponentInChildren<PlayerInteractView>();
         AnimationController = GetComponentInChildren<PlayerAnimationController>();
 
         StateController = new PlayerStateController();
@@ -96,7 +98,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
             renderer.material = InstancedMaterial;
         }
 
-        InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.ShaderValue.MAX_VALUE);
+        InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.MathConstant.NORMALIZED_MAX);
     }
     private void Update() => StateController.Tick();
     private void FixedUpdate() => StateController.FixedTick();
@@ -127,7 +129,6 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
             OnStaminaChanged?.Invoke(CurrentStamina, Data.MaxStamina);
         }   
     }
-
     public void RegenerateStamina(float deltaTime)
     {
         if (CurrentStamina >= Data.MaxStamina) 

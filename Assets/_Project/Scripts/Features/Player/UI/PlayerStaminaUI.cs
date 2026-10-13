@@ -44,7 +44,7 @@ public class PlayerStaminaUI : MonoBehaviour
     private void HideStaminaBar() => _canvasGroup.DOFade(0f, _fadeDuration).OnComplete(() => ResetStamina());
     private void ResetStamina()
     {
-        _staminaFillImage.fillAmount = 1f;
+        _staminaFillImage.fillAmount = GameConstant.MathConstant.NORMALIZED_MAX;
         _player.ResetStamina();
     }
     private void Start()
@@ -67,7 +67,7 @@ public class PlayerStaminaUI : MonoBehaviour
 
         if (_hideWhenFull && _canvasGroup != null)
         {
-            float targetAlpha = ratio >= 0.99f ? 0f : 1f;
+            float targetAlpha = ratio >= 0.99f ? GameConstant.MathConstant.NORMALIZED_MIN : GameConstant.MathConstant.NORMALIZED_MAX;
 
             if (Mathf.Approximately(_canvasGroup.alpha, targetAlpha) && !_fadeTween.IsActive())
                 return;

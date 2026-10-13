@@ -30,14 +30,14 @@ public class DeadState : IState
         if (_player.InstancedMaterial == null)
             return;
 
-        _player.InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.ShaderValue.MAX_VALUE);
+        _player.InstancedMaterial.SetFloat(GameConstant.ShaderProperties.DissolveID, GameConstant.MathConstant.NORMALIZED_MAX);
         Color targetColor = Color.black;
 
         Sequence deathSeq = DOTween.Sequence();
 
         deathSeq.Append(_player.InstancedMaterial.DOColor(targetColor, GameConstant.ShaderProperties.BaseColorID, _player.Data.BurnDuration));
 
-        deathSeq.Append(_player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MIN_VALUE, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration));
+        deathSeq.Append(_player.InstancedMaterial.DOFloat(GameConstant.MathConstant.NORMALIZED_MIN, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration));
 
         deathSeq.OnComplete(() => {
             HandleSpawnEffect().Forget();
@@ -53,7 +53,7 @@ public class DeadState : IState
         _player.Visual.rotation = Quaternion.identity;
 
         _player.InstancedMaterial.SetColor(GameConstant.ShaderProperties.BaseColorID, Color.white);
-        await _player.InstancedMaterial.DOFloat(GameConstant.ShaderValue.MAX_VALUE, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration).AsyncWaitForCompletion();
+        await _player.InstancedMaterial.DOFloat(GameConstant.MathConstant.NORMALIZED_MAX, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration).AsyncWaitForCompletion();
 
         //Tekrardan kontrol edilebilir olacak
         _player.AnimationController.PlayStandUpAnimation();

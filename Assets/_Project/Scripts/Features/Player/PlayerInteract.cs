@@ -4,7 +4,6 @@ public class PlayerInteract : MonoBehaviour
 {
     private PlayerBase _player;
 
-
     private StepLaserRotator _stepLaser;
     private void Awake()
     {
@@ -27,14 +26,20 @@ public class PlayerInteract : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<StepLaserRotator>(out StepLaserRotator laser))
+        {
             _stepLaser = laser;
+            _player.InteractView.ShowInteractView();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.TryGetComponent<StepLaserRotator>(out StepLaserRotator laser))
         {
             if (_stepLaser = laser)
+            {
                 _stepLaser = null;
+                _player.InteractView.HideInteractView();
+            }
         }
     }
 }
