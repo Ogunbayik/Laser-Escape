@@ -2,6 +2,10 @@ using UnityEngine;
 
 public static class GameConstant
 {
+    public static class GameTag
+    {
+        public const string WALL = "Wall";
+    }
     public static class CameraPriority
     {
         public static readonly int ACTIVE_PRIORITY = 10;

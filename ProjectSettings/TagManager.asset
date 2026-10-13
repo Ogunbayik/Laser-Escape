@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mirror
   - PlayerEyes
+  - Wall
   layers:
   - Default
   - TransparentFX
