@@ -7,7 +7,7 @@ public class CheckPointManager : MonoBehaviour
     [Header("Check Point References")]
     [SerializeField] private CheckPoint _initialCheckPoint;
     
-    public CheckPoint CurrentCheckPoint;
+    [HideInInspector] public CheckPoint CurrentCheckPoint;
     private void Awake()
     {
         if (Instance == null)
