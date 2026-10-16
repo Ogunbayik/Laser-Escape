@@ -40,15 +40,11 @@ public class LaserBeam : MonoBehaviour
             _spawnedSpark = Instantiate(_continuousSparkPrefab, transform);
             _spawnedSpark.Stop();
         }
-
-
     }
-
     private void Update()
     {
         ProcessLaser();
     }
-
     private void ProcessLaser()
     {
         _previousTargets.Clear();
@@ -145,7 +141,6 @@ public class LaserBeam : MonoBehaviour
             }
         }
     }
-
     private void RegisterTarget(ILaserTargetable target, Vector3 hitPoint, Vector3 hitNormal)
     {
         if (_currentTargets.Add(target))

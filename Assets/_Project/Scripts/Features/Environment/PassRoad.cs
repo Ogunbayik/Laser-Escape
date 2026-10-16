@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PassRoad : MonoBehaviour
 {
-    [Header("Identity Settings")]
-    public int NextRoomID;
-
     [Header("Right Camera Settings")]
     [SerializeField] private Vector3 _offsetPassCamRight;
     [SerializeField] private Vector3 _aimPassCamRight;
@@ -29,12 +26,8 @@ public class PassRoad : MonoBehaviour
             {
                 ApplyPassCameraSettings(_offsetPassCamLeft, _aimPassCamLeft);
             }
-
-            //Player enter the pass Road
-            GameEvents.TriggerRoomTransition(NextRoomID);
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.TryGetComponent<PlayerBase>(out PlayerBase player))
@@ -43,7 +36,6 @@ public class PassRoad : MonoBehaviour
             CameraManager.Instance.SwitchCamera(CameraType.Gameplay);
         }
     }
-
     private void ApplyPassCameraSettings(Vector3 offset, Vector3 aim)
     {
         CameraManager.Instance.SetPassCameraOffsetAndAim(offset, aim);

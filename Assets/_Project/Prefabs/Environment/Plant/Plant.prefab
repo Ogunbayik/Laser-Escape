@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433383beb0703f4479b2d08a31da3534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Plant
-  _growDuration: 1
+  _growDuration: 0.5
 --- !u!1 &8155588283725593033
 GameObject:
   m_ObjectHideFlags: 0

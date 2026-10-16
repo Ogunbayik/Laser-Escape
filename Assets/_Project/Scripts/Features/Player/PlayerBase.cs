@@ -20,6 +20,9 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     [Header("Transform References")]
     public Transform Visual;
 
+    [Header("Lock Settings")]
+    public bool IsMovementLocked { get; private set; }
+
     public PlayerStateController StateController {  get; private set; }
 
     public IdleState IdleState {  get; private set; }
@@ -61,6 +64,9 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
             Input.OnSprintStateChanged += OnSprintStateChanged;
 
         AnimationController.OnPlayerSpawned += ReturnToIdle;
+
+        GameEvents.OnCinematicStarted += OnCinematicStarted;
+        GameEvents.OnCinematicEnded += OnCinematicEnded;
     }
     private void OnDisable()
     {
@@ -68,7 +74,12 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
             Input.OnSprintStateChanged -= OnSprintStateChanged;
 
         AnimationController.OnPlayerSpawned -= ReturnToIdle;
+
+        GameEvents.OnCinematicStarted -= OnCinematicStarted;
+        GameEvents.OnCinematicEnded -= OnCinematicEnded;
     }
+    private void OnCinematicStarted() => SetMovementLock(true);
+    private void OnCinematicEnded() => SetMovementLock(false);
     private void OnSprintStateChanged(bool isActive)
     {
         IsSprint = isActive;
@@ -145,6 +156,21 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         if (!Mathf.Approximately(prev, CurrentStamina))
         {
             OnStaminaChanged?.Invoke(CurrentStamina, Data.MaxStamina);
+        }
+    }
+    public void SetMovementLock(bool isLocked)
+    {
+        IsMovementLocked = isLocked;
+
+        if (isLocked)
+        {
+            if (Rb != null)
+            {
+                Rb.linearVelocity = new Vector3(0f, Rb.linearVelocity.y, 0f);
+            }
+
+            StateController.SwitchState(IdleState);
+            Debug.Log(StateController.CurrentState);
         }
     }
     public void ResetStamina() => CurrentStamina = Data.MaxStamina;

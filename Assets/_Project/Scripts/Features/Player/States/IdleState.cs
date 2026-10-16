@@ -7,10 +7,18 @@ public class IdleState : IState
     public IdleState(PlayerBase player) => _player = player;
     public void EnterState()
     {
+        if (_player.Rb != null)
+        {
+            _player.Rb.linearVelocity = new Vector3(0f, _player.Rb.linearVelocity.y, 0f);
+        }
+
         _player.AnimationController.PlayWalkAnimation(false);
     }
     public void Tick()
     {
+        if (_player.IsMovementLocked) 
+            return;
+
         _player.RegenerateStamina(Time.deltaTime);
 
         Vector2 input = _player.Input.GetPlayerInput();

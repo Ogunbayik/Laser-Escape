@@ -278,7 +278,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 1, z: 4}
+  m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6576388540353992386
 GameObject:
@@ -330,8 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab0f7316611b0e45ac83456d1ee155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
-  PlantGroup: {fileID: 8276591899571468336}
-  _checkPointID: 0
+  _plantGroup: {fileID: 8276591899571468336}
   _spawnPosition: {fileID: 2056421145209656111}
   _offsetSpawnCam: {x: 0, y: 0, z: 0}
 --- !u!1001 &647765837465144318

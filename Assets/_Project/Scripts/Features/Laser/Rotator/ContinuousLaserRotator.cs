@@ -7,6 +7,7 @@ public class ContinuousLaserRotator : BaseLaserRotator
 
     protected override void Start()
     {
+        base.Start();
         _rotationType = LaserRotationType.Continuous;
         IsRotating = true;
     }

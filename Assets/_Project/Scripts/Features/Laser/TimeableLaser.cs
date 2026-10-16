@@ -12,16 +12,20 @@ public class TimeableLaser : BaseLaserController
         base.Start();
         SetTimer();
     }
-    private void Update() => HandleCountdownTimer();
+    private void Update()
+    {
+        if (_currentStatus == LaserStatus.Active)
+            HandleCountdownTimer();
+    }
     private void HandleCountdownTimer()
     {
         _currentTime -= Time.deltaTime;
 
         if(_currentTime <= 0)
         {
-            SetActiveState(!IsActive);
+            SetLaserBeamActivateStatus(!IsLaserBeamActive);
             SetTimer();
         }
     }
-    private void SetTimer() => _currentTime = IsActive ? _activeDuration : _deactiveDuration;
+    private void SetTimer() => _currentTime = IsLaserBeamActive ? _activeDuration : _deactiveDuration;
 }

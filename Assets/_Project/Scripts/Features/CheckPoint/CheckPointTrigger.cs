@@ -15,6 +15,7 @@ public class CheckPointTrigger : MonoBehaviour
         {
             HasTriggered = true;
             OnPlayerEnterCheckPoint?.Invoke();
+            gameObject.SetActive(false);
         }
     }
 }

@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    private CheckPointTrigger _trigger;
+
     [Header("Plant References")]
-    public PlantGroup PlantGroup;
-
-
-    [Header("Identity Settings")]
-    [SerializeField] private int _checkPointID;
+    public PlantGroup _plantGroup;
 
 
     [Header("Spawn Settings")]
@@ -20,22 +18,20 @@ public class CheckPoint : MonoBehaviour
     [Header("Offset Settings")]
     [SerializeField] private Vector3 _offsetSpawnCam;
 
-    public int CheckPointID => _checkPointID;
     public Transform SpawnPosition => _spawnPosition;
     public Vector3 OffsetSpawnCam => _offsetSpawnCam;
-    private void OnEnable() 
-    { 
-        GameEvents.OnRoomTransitioned += GameEvents_OnRoomTransitioned;
+    private void Awake() => _trigger = GetComponentInChildren<CheckPointTrigger>();
+    private void OnEnable()
+    {
+        _trigger.OnPlayerEnterCheckPoint += OnPlayerEnterCheckPoint;
     }
     private void OnDisable()
     {
-        GameEvents.OnRoomTransitioned -= GameEvents_OnRoomTransitioned;
+        _trigger.OnPlayerEnterCheckPoint -= OnPlayerEnterCheckPoint;
     }
-    private void GameEvents_OnRoomTransitioned(int nextRoomID)
+    private void OnPlayerEnterCheckPoint()
     {
-        if (nextRoomID != _checkPointID)
-            return;
-
         CheckPointManager.Instance.SetCheckPoint(this);
+        _plantGroup.PlayGrowPlantsAnimation().Forget();
     }
 }

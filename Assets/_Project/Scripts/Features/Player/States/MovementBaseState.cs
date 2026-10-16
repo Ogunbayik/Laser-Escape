@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public abstract class MovementBaseState : IState
 {
@@ -13,6 +14,9 @@ public abstract class MovementBaseState : IState
 
     public virtual void Tick()
     {
+        if (Player.IsMovementLocked) 
+            return;
+
         Vector2 input = Player.Input.GetPlayerInput();
         Vector3 direction = new Vector3(input.x, 0f, input.y).normalized;
 
