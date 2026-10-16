@@ -6,9 +6,6 @@ public class Room : MonoBehaviour
 {
     private PlayableDirector _director;
 
-    [Header("Identitiy Settings")]
-    [SerializeField] private int _roomID;
-
     [Header("Laser Settings")]
     [SerializeField] private List<BaseLaserController> _lasersList;
 

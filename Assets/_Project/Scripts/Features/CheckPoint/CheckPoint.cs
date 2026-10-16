@@ -20,6 +20,7 @@ public class CheckPoint : MonoBehaviour
 
     public Transform SpawnPosition => _spawnPosition;
     public Vector3 OffsetSpawnCam => _offsetSpawnCam;
+    public CheckPointTrigger Trigger => _trigger;
     private void Awake() => _trigger = GetComponentInChildren<CheckPointTrigger>();
     private void OnEnable()
     {

@@ -14,7 +14,6 @@ public class RoomController : MonoBehaviour
         if (_roomsList == null || _roomsList.Count == 0) 
             return;
 
-
         _currentRoom = _roomsList[_roomIndex];
         _currentRoom.gameObject.SetActive(true);
         _currentRoom.Initialize();

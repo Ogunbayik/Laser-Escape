@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &401082904037670477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6955500664633462324}
+  - component: {fileID: 3214624430283175915}
+  m_Layer: 0
+  m_Name: IntroCam03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6955500664633462324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401082904037670477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.33100694, y: -1e-45, z: 1e-45, w: 0.9436284}
+  m_LocalPosition: {x: -5.2107935, y: 15, z: 49.230003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4724973822747074590}
+  m_Father: {fileID: 7768446117665742417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3214624430283175915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401082904037670477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineVirtualCamera
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 20
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 4483706260507439407}
+  m_Follow: {fileID: 4483706260507439407}
+  m_Lens:
+    FieldOfView: 25
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 4724973822747074590}
 --- !u!1 &1289637333602080387
 GameObject:
   m_ObjectHideFlags: 0
@@ -51,6 +123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1362702018319446711}
   - component: {fileID: 4390580746048201268}
+  - component: {fileID: 2600933088038015774}
+  - component: {fileID: 7432675136610892132}
   m_Layer: 0
   m_Name: Room04
   m_TagString: Untagged
@@ -80,6 +154,7 @@ Transform:
   - {fileID: 1480064329511178355}
   - {fileID: 5156563599254161958}
   - {fileID: 574326603737995059}
+  - {fileID: 7768446117665742417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4390580746048201268
@@ -95,10 +170,384 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Room
   _roomID: 4
-  _lasersList: []
+  _lasersList:
+  - {fileID: 7538741972650080787}
+  - {fileID: 7785731715037106953}
+  - {fileID: 6556328509920309665}
+  - {fileID: 5990684539314603522}
+  - {fileID: 2473828221122906975}
+  - {fileID: 2339844332242567109}
+  - {fileID: 5986125203778523335}
+  - {fileID: 340901113235025293}
+  - {fileID: 804258970129827270}
+  - {fileID: 6965763208809137799}
   _checkPoint: {fileID: 3980807939069082839}
   _enterTrigger: {fileID: 1142154590219273153}
   _passTrigger: {fileID: 8515137268097379772}
+--- !u!320 &2600933088038015774
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451315478809435352}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 93d36475635cf4b4fb498e62ab244e34, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 8602321543874961075, guid: 93d36475635cf4b4fb498e62ab244e34, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6037514545329821715, guid: 93d36475635cf4b4fb498e62ab244e34, type: 2}
+    value: {fileID: 7432675136610892132}
+  m_ExposedReferences:
+    m_References:
+    - 5d7bcfebff662484ebcd2fd87045ece6: {fileID: 3281389110625171708}
+    - 5d342c7c33b24a94d9b516fa7abc7ac9: {fileID: 0}
+    - 510ec5b353f98094ebec6221f01359a5: {fileID: 0}
+    - ff34c5a6730006c408c987aa3c45e7cf: {fileID: 1168745550554915713}
+    - 859772feeebe6d44aa4aa803b29c0c53: {fileID: 7920160389402790527}
+    - 50d50dfc357eac444ae3cc1eeaccff38: {fileID: 3214624430283175915}
+--- !u!114 &7432675136610892132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451315478809435352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: dc7f2f502c597a644944edd206156a48, type: 2}
+    - {fileID: 11400000, guid: 6e174348fff2e074594fc173521b6888, type: 2}
+    - {fileID: 11400000, guid: 88496b57b70c232448e4c7219eb6d336, type: 2}
+    - {fileID: 11400000, guid: b2482b93ab897e647a39dd1d9d71c2a1, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7538741972650080787}
+          m_TargetAssemblyTypeName: TimeableLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7785731715037106953}
+          m_TargetAssemblyTypeName: TimeableLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6556328509920309665}
+          m_TargetAssemblyTypeName: TimeableLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5990684539314603522}
+          m_TargetAssemblyTypeName: StaticLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2473828221122906975}
+          m_TargetAssemblyTypeName: StaticLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6965763208809137799}
+          m_TargetAssemblyTypeName: InteractableLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2339844332242567109}
+          m_TargetAssemblyTypeName: StaticLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5986125203778523335}
+          m_TargetAssemblyTypeName: StaticLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 340901113235025293}
+          m_TargetAssemblyTypeName: StaticLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 804258970129827270}
+          m_TargetAssemblyTypeName: StaticLaser, Assembly-CSharp
+          m_MethodName: PlayLaserActivateSequence
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1613126317916150814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3778344701807900059}
+  - component: {fileID: 6850199073570567443}
+  - component: {fileID: 4305959607872236669}
+  - component: {fileID: 6192503233527664097}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3778344701807900059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613126317916150814}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2895381893800314651}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6850199073570567443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613126317916150814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachinePipeline
+--- !u!114 &4305959607872236669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613126317916150814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineComposer
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &6192503233527664097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613126317916150814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTransposer
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 12, z: 15}
+  m_XDamping: 1.5
+  m_YDamping: 0
+  m_ZDamping: 1.5
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+--- !u!1 &2085138947238335490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5918835923664674121}
+  - component: {fileID: 3053479989438638997}
+  - component: {fileID: 2180033250983735013}
+  - component: {fileID: 2934459701119746381}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5918835923664674121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085138947238335490}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3166138640060086790}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3053479989438638997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085138947238335490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachinePipeline
+--- !u!114 &2180033250983735013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085138947238335490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineComposer
+  m_TrackedObjectOffset: {x: 3, y: 0, z: 3}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &2934459701119746381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085138947238335490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTransposer
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 15, z: -15}
+  m_XDamping: 1.5
+  m_YDamping: 0
+  m_ZDamping: 1.5
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &2775037856610847460
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +614,101 @@ Transform:
   - {fileID: 4725079016169234061}
   m_Father: {fileID: 1362702018319446711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4169726116635088889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2710276653169248895}
+  - component: {fileID: 8396067023745386703}
+  - component: {fileID: 1106462494066110880}
+  - component: {fileID: 9106112695338989364}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2710276653169248895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169726116635088889}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3596343621222145794}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8396067023745386703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169726116635088889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachinePipeline
+--- !u!114 &1106462494066110880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169726116635088889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineComposer
+  m_TrackedObjectOffset: {x: 0, y: -1, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &9106112695338989364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169726116635088889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTransposer
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 15, z: -15}
+  m_XDamping: 1.5
+  m_YDamping: 0
+  m_ZDamping: 1.5
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &4989056694200386683
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +822,352 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &5087287558680485626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7768446117665742417}
+  m_Layer: 0
+  m_Name: Cameras
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7768446117665742417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087287558680485626}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3596343621222145794}
+  - {fileID: 2895381893800314651}
+  - {fileID: 6955500664633462324}
+  - {fileID: 3166138640060086790}
+  m_Father: {fileID: 1362702018319446711}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5746728154583543811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3596343621222145794}
+  - component: {fileID: 7920160389402790527}
+  m_Layer: 0
+  m_Name: IntroCam01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3596343621222145794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746728154583543811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.39752918, y: 0.0000000019761595, z: -7.89768e-10, w: 0.9175896}
+  m_LocalPosition: {x: 16.789207, y: 15, z: 51.230003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2710276653169248895}
+  m_Father: {fileID: 7768446117665742417}
+  m_LocalEulerAnglesHint: {x: 0, y: -26.565, z: 0}
+--- !u!114 &7920160389402790527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746728154583543811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineVirtualCamera
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 1
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 207393498110877576}
+  m_Follow: {fileID: 207393498110877576}
+  m_Lens:
+    FieldOfView: 25
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 2710276653169248895}
+--- !u!1 &5969208461420793843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2895381893800314651}
+  - component: {fileID: 1168745550554915713}
+  m_Layer: 0
+  m_Name: IntroCam02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2895381893800314651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969208461420793843}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0000000110291545, y: 0.9436284, z: -0.3310069, w: -0.000000031441708}
+  m_LocalPosition: {x: 7.7892065, y: 12, z: 77.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3778344701807900059}
+  m_Father: {fileID: 7768446117665742417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1168745550554915713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969208461420793843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineVirtualCamera
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 1
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 5714700031553322098}
+  m_Follow: {fileID: 5714700031553322098}
+  m_Lens:
+    FieldOfView: 25
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 3778344701807900059}
+--- !u!1 &7078366303804216315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4724973822747074590}
+  - component: {fileID: 6673431240417316280}
+  - component: {fileID: 4901309377000321382}
+  - component: {fileID: 4904968529695460244}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4724973822747074590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078366303804216315}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6955500664633462324}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6673431240417316280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078366303804216315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachinePipeline
+--- !u!114 &4901309377000321382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078366303804216315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineComposer
+  m_TrackedObjectOffset: {x: 0, y: 3, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &4904968529695460244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078366303804216315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTransposer
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 15, z: -15}
+  m_XDamping: 1.5
+  m_YDamping: 0
+  m_ZDamping: 1.5
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+--- !u!1 &7487106641750595281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3166138640060086790}
+  - component: {fileID: 3281389110625171708}
+  m_Layer: 0
+  m_Name: IntroCam04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3166138640060086790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487106641750595281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.33611068, y: 0.07764813, z: -0.027817369, w: 0.93820393}
+  m_LocalPosition: {x: -21.210793, y: 15, z: 51.230003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5918835923664674121}
+  m_Father: {fileID: 7768446117665742417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3281389110625171708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487106641750595281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineVirtualCamera
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 1
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 1789760280227158013}
+  m_Follow: {fileID: 1789760280227158013}
+  m_Lens:
+    FieldOfView: 25
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 5918835923664674121}
 --- !u!1 &8318008995306487613
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +1363,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25cd24a3273cba54fa0e919bb864dfc6, type: 3}
+--- !u!114 &2473828221122906975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2832058900354211770, guid: 25cd24a3273cba54fa0e919bb864dfc6, type: 3}
+  m_PrefabInstance: {fileID: 367521904716059877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d30086dca42e64d87109fe9942f330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticLaser
 --- !u!4 &4483706260507439407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4260651740891391434, guid: 25cd24a3273cba54fa0e919bb864dfc6, type: 3}
@@ -636,6 +1537,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+--- !u!114 &340901113235025293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1510427956838364787, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+  m_PrefabInstance: {fileID: 1174597246768110590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d30086dca42e64d87109fe9942f330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticLaser
 --- !u!4 &1789760280227158013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 620230690864679939, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
@@ -691,7 +1603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7874843775644332154, guid: 99a2a7934b14ba7468bcc63c4b05fcb8, type: 3}
       propertyPath: m_Name
-      value: Room04
+      value: Walls04
       objectReference: {fileID: 0}
     - target: {fileID: 7874843775644332154, guid: 99a2a7934b14ba7468bcc63c4b05fcb8, type: 3}
       propertyPath: m_IsActive
@@ -858,6 +1770,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+--- !u!114 &804258970129827270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1510427956838364787, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+  m_PrefabInstance: {fileID: 2296646130448593845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d30086dca42e64d87109fe9942f330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticLaser
 --- !u!4 &1676698032988569526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 620230690864679939, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
@@ -1054,6 +1977,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7883636947742687405, guid: bd9f2671f832b7e4ca096c3138a4d8cf, type: 3}
   m_PrefabInstance: {fileID: 2460935095440063711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5990684539314603522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8144144987542174429, guid: bd9f2671f832b7e4ca096c3138a4d8cf, type: 3}
+  m_PrefabInstance: {fileID: 2460935095440063711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d30086dca42e64d87109fe9942f330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticLaser
 --- !u!1001 &2499252670879277423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1292,6 +2226,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2131591444004282741, guid: daed059694a45024c9d00278b691a346, type: 3}
   m_PrefabInstance: {fileID: 3752458403347056734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6965763208809137799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6104688334181994201, guid: daed059694a45024c9d00278b691a346, type: 3}
+  m_PrefabInstance: {fileID: 3752458403347056734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88df50a937511a4eb3ef53a1d9b41b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableLaser
 --- !u!1001 &3787195494207064502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1377,6 +2322,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+--- !u!114 &2339844332242567109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1510427956838364787, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+  m_PrefabInstance: {fileID: 3787195494207064502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d30086dca42e64d87109fe9942f330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticLaser
 --- !u!4 &4329457577632253365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 620230690864679939, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
@@ -1619,6 +2575,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 620230690864679939, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
   m_PrefabInstance: {fileID: 5180515134913652404}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5986125203778523335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1510427956838364787, guid: 8f03bf4fad25d2040ad1a86473305193, type: 3}
+  m_PrefabInstance: {fileID: 5180515134913652404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d30086dca42e64d87109fe9942f330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticLaser
 --- !u!1001 &5607366501886481587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1709,6 +2676,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8773340699481794963, guid: d313f273553d0e7498d87a255be37ef3, type: 3}
   m_PrefabInstance: {fileID: 5607366501886481587}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6556328509920309665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1670162651617862930, guid: d313f273553d0e7498d87a255be37ef3, type: 3}
+  m_PrefabInstance: {fileID: 5607366501886481587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b94b5b7203ede48833f53168faeaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeableLaser
 --- !u!1001 &7893229961098580648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2051,6 +3029,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8773340699481794963, guid: d313f273553d0e7498d87a255be37ef3, type: 3}
   m_PrefabInstance: {fileID: 8872625266343097883}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7785731715037106953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1670162651617862930, guid: d313f273553d0e7498d87a255be37ef3, type: 3}
+  m_PrefabInstance: {fileID: 8872625266343097883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b94b5b7203ede48833f53168faeaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeableLaser
 --- !u!1001 &9201806168474525441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2141,3 +3130,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8773340699481794963, guid: d313f273553d0e7498d87a255be37ef3, type: 3}
   m_PrefabInstance: {fileID: 9201806168474525441}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7538741972650080787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1670162651617862930, guid: d313f273553d0e7498d87a255be37ef3, type: 3}
+  m_PrefabInstance: {fileID: 9201806168474525441}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b94b5b7203ede48833f53168faeaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeableLaser
