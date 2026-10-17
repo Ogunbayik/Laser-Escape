@@ -278,8 +278,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 3, y: 1, z: 2.5}
+  m_Center: {x: 0, y: 0.5, z: -0.2}
 --- !u!1 &6576388540353992386
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab0f7316611b0e45ac83456d1ee155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
-  _plantGroup: {fileID: 8276591899571468336}
   _spawnPosition: {fileID: 2056421145209656111}
   _offsetSpawnCam: {x: 0, y: 0, z: 0}
 --- !u!1001 &647765837465144318
@@ -941,14 +940,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9186351169256838497, guid: a1b7551656ee0ae46b44996c88f37e10, type: 3}
   m_PrefabInstance: {fileID: 8493355030034900282}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8276591899571468336 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 505011314097446154, guid: a1b7551656ee0ae46b44996c88f37e10, type: 3}
-  m_PrefabInstance: {fileID: 8493355030034900282}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd465061e7b001b4ebde5b8510dd42a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlantGroup

@@ -12,6 +12,9 @@ public class PlantGroup : MonoBehaviour
     [Header("Delay Settings")]
     [SerializeField] private float _minDelay;
     [SerializeField] private float _maxDelay;
+
+
+    private bool _hasTriggered = false;
     void Start() => Initialize();
     private void Initialize()
     {
@@ -20,6 +23,14 @@ public class PlantGroup : MonoBehaviour
             plant.SetPlantSize(Vector3.zero);
             plant.TogglePlant(false);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_hasTriggered)
+            return;
+
+        _hasTriggered = true;
+        PlayGrowPlantsAnimation().Forget();
     }
     public async UniTask PlayGrowPlantsAnimation()
     {

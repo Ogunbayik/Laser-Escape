@@ -6,6 +6,9 @@ public class RoomController : MonoBehaviour
     [Header("Room References")]
     [SerializeField] private List<Room> _roomsList;
 
+    [Header("Final Place References")]
+    [SerializeField] private GameObject _finalPlace;
+
     private Room _currentRoom;
 
     private int _roomIndex = 0;
@@ -22,6 +25,8 @@ public class RoomController : MonoBehaviour
         {
             _roomsList[i].gameObject.SetActive(false);
         }
+
+        _finalPlace.SetActive(false);
 
         SubscribeToCurrentRoom();
     }
@@ -53,6 +58,7 @@ public class RoomController : MonoBehaviour
         if (_roomIndex >= _roomsList.Count)
         {
             Debug.Log("Tüm odalar tamamlandı!");
+            _finalPlace.SetActive(true);
             return;
         }
 

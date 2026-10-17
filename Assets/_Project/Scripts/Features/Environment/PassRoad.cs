@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PassRoad : MonoBehaviour
 {
+
     [Header("Right Camera Settings")]
     [SerializeField] private Vector3 _offsetPassCamRight;
     [SerializeField] private Vector3 _aimPassCamRight;

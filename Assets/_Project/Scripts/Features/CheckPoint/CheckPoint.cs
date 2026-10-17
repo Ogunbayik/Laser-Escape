@@ -7,9 +7,6 @@ public class CheckPoint : MonoBehaviour
 {
     private CheckPointTrigger _trigger;
 
-    [Header("Plant References")]
-    public PlantGroup _plantGroup;
-
 
     [Header("Spawn Settings")]
     [SerializeField] private Transform _spawnPosition;
@@ -30,9 +27,5 @@ public class CheckPoint : MonoBehaviour
     {
         _trigger.OnPlayerEnterCheckPoint -= OnPlayerEnterCheckPoint;
     }
-    private void OnPlayerEnterCheckPoint()
-    {
-        CheckPointManager.Instance.SetCheckPoint(this);
-        _plantGroup.PlayGrowPlantsAnimation().Forget();
-    }
+    private void OnPlayerEnterCheckPoint() => CheckPointManager.Instance.SetCheckPoint(this);
 }

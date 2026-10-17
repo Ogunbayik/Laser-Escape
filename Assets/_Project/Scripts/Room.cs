@@ -19,6 +19,10 @@ public class Room : MonoBehaviour
     [SerializeField] private RoomPassTrigger _passTrigger;
 
 
+    [Header("Barrier References")]
+    [SerializeField] private Barrier _barrier;
+
+
     private bool _hasPlayedIntro = false;
     public RoomPassTrigger PassTrigger => _passTrigger;
     private void Awake()
@@ -31,11 +35,17 @@ public class Room : MonoBehaviour
         {
             laser.SetLaserStatus(LaserStatus.Standby);
         }
+
+        _enterTrigger.gameObject.SetActive(false);
+
+        if (_checkPoint != null && _checkPoint.Trigger != null)
+            _checkPoint.Trigger.OnPlayerEnterCheckPoint += OnPlayerEnterCheckPoint;
     }
     private void OnEnable()
     {
         _enterTrigger.OnPlayerEnteredRoom += PlayerEnteredRoom;
         _passTrigger.OnPlayerPassedRoom += PlayerPassedRoom;
+        
 
         if(_director != null)
             _director.stopped += OnDirectorStopped;
@@ -44,15 +54,18 @@ public class Room : MonoBehaviour
     {
         _enterTrigger.OnPlayerEnteredRoom -= PlayerEnteredRoom;
         _passTrigger.OnPlayerPassedRoom -= PlayerPassedRoom;
+        _checkPoint.Trigger.OnPlayerEnterCheckPoint -= OnPlayerEnterCheckPoint;
 
         if (_director != null)
             _director.stopped -= OnDirectorStopped;
     }
-    private void OnDirectorStopped(PlayableDirector director) => GameEvents.TriggerCinematicEnded();
-    private void PlayerEnteredRoom()
+    private void OnPlayerEnterCheckPoint()
     {
-        PlayRoomIntro();
+        _enterTrigger.gameObject.SetActive(true);
+        _barrier.FadeOutBarrier();
     }
+    private void OnDirectorStopped(PlayableDirector director) => GameEvents.TriggerCinematicEnded();
+    private void PlayerEnteredRoom() => PlayRoomIntro();
     private void PlayerPassedRoom() => DeactivateLasers();
     private void DeactivateLasers()
     {

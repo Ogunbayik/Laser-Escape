@@ -16,6 +16,7 @@ public static class GameConstant
         public static readonly int DissolveID = Shader.PropertyToID("_DissolveThreshold");
         public static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
         public static readonly int EmissionID = Shader.PropertyToID("_EmissionColor");
+        public static readonly int OpacityPropertyID = Shader.PropertyToID("_BarrierOpacity");
     }
     public static class MathConstant
     {
