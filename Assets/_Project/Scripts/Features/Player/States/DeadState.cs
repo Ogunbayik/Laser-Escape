@@ -56,7 +56,6 @@ public class DeadState : IState
         await _player.InstancedMaterial.DOFloat(GameConstant.MathConstant.NORMALIZED_MAX, GameConstant.ShaderProperties.DissolveID, _player.Data.DissolveDuration).AsyncWaitForCompletion();
 
         //Tekrardan kontrol edilebilir olacak
-        _player.AnimationController.PlayStandUpAnimation();
-        _player.SetDeadStatus(false);
+        _player.StateController.SwitchState(_player.SpawnState);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerBase : MonoBehaviour, ILaserTargetable
 {
     public event Action<float, float> OnStaminaChanged;
+    public event Action<bool> OnExhaustedChanged;
     public event Action OnPlayerDied;
 
     [HideInInspector] public Rigidbody Rb;
@@ -29,15 +30,16 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     public DeadState DeadState { get; private set; }
     public WalkState WalkState { get; private set; }
     public SprintState SprintState { get; private set; }
+    public SpawnState SpawnState { get; private set; }
 
     [HideInInspector] public Material InstancedMaterial;
     [HideInInspector] public float MovementSpeed;
 
 
     public float CurrentStamina { get; private set; }
-    public bool IsExhausted { get; private set; }
+    public bool _isExhausted;
     public bool IsSprint;
-    public bool CanSprint => CurrentStamina > 0f && !IsExhausted;
+    public bool CanSprint => CurrentStamina > 0f && !_isExhausted;
 
     private bool _isDead;
     private void Awake()
@@ -53,6 +55,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         DeadState = new DeadState(this);
         WalkState = new WalkState(this);
         SprintState = new SprintState(this);
+        SpawnState = new SpawnState(this);
     }
     private void Start()
     {
@@ -63,8 +66,6 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         if (Input != null)
             Input.OnSprintStateChanged += OnSprintStateChanged;
 
-        AnimationController.OnPlayerSpawned += ReturnToIdle;
-
         GameEvents.OnCinematicStarted += OnCinematicStarted;
         GameEvents.OnCinematicEnded += OnCinematicEnded;
     }
@@ -72,8 +73,6 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     {
         if (Input != null)
             Input.OnSprintStateChanged -= OnSprintStateChanged;
-
-        AnimationController.OnPlayerSpawned -= ReturnToIdle;
 
         GameEvents.OnCinematicStarted -= OnCinematicStarted;
         GameEvents.OnCinematicEnded -= OnCinematicEnded;
@@ -86,7 +85,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     }
     private void Initialize()
     {
-        StateController.SwitchState(IdleState);
+        StateController.Initialize(SpawnState);
         IsSprint = false;
         MovementSpeed = Data.WalkSpeed;
         CurrentStamina = Data.MaxStamina;
@@ -132,8 +131,11 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         float prev = CurrentStamina;
         CurrentStamina = Mathf.Max(0f, CurrentStamina - (Data.StaminaDrainRate * deltaTime));
 
-        if (CurrentStamina <= 0f) 
-            IsExhausted = true;
+        if (CurrentStamina <= 0f)
+        {
+            _isExhausted = true;
+            OnExhaustedChanged?.Invoke(_isExhausted);
+        }
 
         if (!Mathf.Approximately(prev, CurrentStamina))
         {
@@ -148,9 +150,10 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         float prev = CurrentStamina;
         CurrentStamina = Mathf.Min(Data.MaxStamina, CurrentStamina + (Data.StaminaRegenRate * deltaTime));
 
-        if (IsExhausted && CurrentStamina >= Data.MaxStamina * 0.5f)
+        if (_isExhausted && CurrentStamina >= Data.MaxStamina * 0.5f)
         {
-            IsExhausted = false;
+            _isExhausted = false;
+            OnExhaustedChanged?.Invoke(_isExhausted);
         }
 
         if (!Mathf.Approximately(prev, CurrentStamina))

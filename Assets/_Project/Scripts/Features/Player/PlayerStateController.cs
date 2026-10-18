@@ -9,7 +9,6 @@ public class PlayerStateController
         CurrentState = startingState;
         CurrentState.EnterState();
     }
-
     public void SwitchState(IState newState)
     {
         if (CurrentState == newState)

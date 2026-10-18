@@ -10,10 +10,15 @@ public class PlayerStaminaUI : MonoBehaviour
 
     [Header("Image References")]
     [SerializeField] private Image _staminaFillImage;
+    [SerializeField] private Image _runImage;
+
 
     [Header("Settings")]
     [SerializeField] private bool _hideWhenFull = true;
     [SerializeField] private float _fadeDuration = 0.25f;
+    [SerializeField] private float _colorChangeDuration = 0.5f;
+
+
 
     private Tween _fadeTween;
 
@@ -29,6 +34,7 @@ public class PlayerStaminaUI : MonoBehaviour
         {
             _player.OnStaminaChanged += HandleStaminaChanged;
             _player.OnPlayerDied += HideStaminaBar;
+            _player.OnExhaustedChanged += ChangeRunImageColor;
         }
     }
     private void OnDisable()
@@ -41,6 +47,12 @@ public class PlayerStaminaUI : MonoBehaviour
 
         _fadeTween?.Kill();
     }
+    private void ChangeRunImageColor(bool isExhausted)
+    {
+        Color targetColor = isExhausted ? Color.red : Color.white;
+        ChangeRunColorWhenExhausted(targetColor);
+    }
+    public void ChangeRunColorWhenExhausted(Color targetColor) => _runImage.DOColor(targetColor, _colorChangeDuration);
     private void HideStaminaBar() => _canvasGroup.DOFade(0f, _fadeDuration).OnComplete(() => ResetStamina());
     private void ResetStamina()
     {

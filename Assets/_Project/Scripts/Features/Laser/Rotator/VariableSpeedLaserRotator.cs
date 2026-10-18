@@ -28,9 +28,6 @@ public class VariableSpeedLaserRotator : BaseLaserRotator
     }
     protected override void Update()
     {
-        if (!IsRotating) 
-            return;
-
         HandleCountdownInterval();
 
         base.Update();

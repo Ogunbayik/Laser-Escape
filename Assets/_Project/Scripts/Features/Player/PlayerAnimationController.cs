@@ -17,7 +17,5 @@ public class PlayerAnimationController : MonoBehaviour
     public void PlayDeadAnimation() => _animator.SetTrigger(GameConstant.PlayerAnimation.DEAD_HASH);
     public void PlayStandUpAnimation() => _animator.SetTrigger(GameConstant.PlayerAnimation.STAND_UP_HASH);
 
-
-    //Using that voids in Animation
-    public void RaisePlayerSpawned() => OnPlayerSpawned?.Invoke();
+    public void OnPlayerSpawnedEvent() => OnPlayerSpawned?.Invoke();
 }

@@ -73827,8 +73827,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 3.7
-    functionName: RaisePlayerSpawned
+  - time: 3.7333333
+    functionName: OnPlayerSpawnedEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

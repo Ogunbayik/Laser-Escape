@@ -77,6 +77,7 @@ public abstract class BaseLaserController : MonoBehaviour
     {
         SetLaserBeamActivateStatus(false);
         SetLaserColor(_defBaseColor, _defEmissionColor);
+        SetLaserStatus(LaserStatus.Standby);
     }
     protected void SetLaserBeamActivateStatus(bool isActive)
     {

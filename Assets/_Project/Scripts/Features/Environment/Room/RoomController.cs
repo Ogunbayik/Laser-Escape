@@ -20,12 +20,12 @@ public class RoomController : MonoBehaviour
         _currentRoom = _roomsList[_roomIndex];
         _currentRoom.gameObject.SetActive(true);
         _currentRoom.Initialize();
-
+/*
         for (int i = 1; i < _roomsList.Count; i++)
         {
             _roomsList[i].gameObject.SetActive(false);
         }
-
+*/
         _finalPlace.SetActive(false);
 
         SubscribeToCurrentRoom();

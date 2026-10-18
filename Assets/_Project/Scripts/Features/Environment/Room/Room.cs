@@ -31,11 +31,6 @@ public class Room : MonoBehaviour
     }
     public void Initialize()
     {
-        foreach (var laser in _lasersList)
-        {
-            laser.SetLaserStatus(LaserStatus.Standby);
-        }
-
         _enterTrigger.gameObject.SetActive(false);
 
         if (_checkPoint != null && _checkPoint.Trigger != null)
