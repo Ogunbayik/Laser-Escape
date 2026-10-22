@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Barrier
   _fadeDuration: 1
+  _maxOpacity: 0.8
 --- !u!1 &5065054207392553429
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +59,7 @@ GameObject:
   - component: {fileID: 3190600982062275420}
   - component: {fileID: 2335113712048765475}
   - component: {fileID: 2673297526782203520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

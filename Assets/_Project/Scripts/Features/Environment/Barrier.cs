@@ -6,14 +6,19 @@ public class Barrier : MonoBehaviour
     [Header("Fade Settings")]
     [SerializeField] private float _fadeDuration = 1f;
 
+    [Header("Opacity Settings")]
+    [SerializeField] private float _maxOpacity = 0.8f;
+
     private Renderer _renderer;
     private MaterialPropertyBlock _mpb;
-    private float _currentOpacity = 0.8f;
+    private float _currentOpacity;
 
     private void Awake()
     {
         _renderer = GetComponentInChildren<MeshRenderer>();
         _mpb = new MaterialPropertyBlock();
+
+        _currentOpacity = _maxOpacity;
     }
     public void FadeOutBarrier()
     {
@@ -22,6 +27,12 @@ public class Barrier : MonoBehaviour
             {
                 gameObject.SetActive(false);
             });
+    }
+    public void FadeInBarrier()
+    {
+        gameObject.SetActive(true);
+
+        DOTween.To(() => _currentOpacity, x => UpdateOpacity(x), _maxOpacity, _fadeDuration);
     }
     private void UpdateOpacity(float value)
     {

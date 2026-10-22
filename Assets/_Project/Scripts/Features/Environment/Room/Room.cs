@@ -20,7 +20,8 @@ public class Room : MonoBehaviour
 
 
     [Header("Barrier References")]
-    [SerializeField] private Barrier _barrier;
+    [SerializeField] private Barrier _enterBarrier;
+    [SerializeField] private Barrier _exitBarrier;
 
 
     private bool _hasPlayedIntro = false;
@@ -32,6 +33,8 @@ public class Room : MonoBehaviour
     public void Initialize()
     {
         _introTrigger.gameObject.SetActive(false);
+        _enterBarrier.gameObject.SetActive(true);
+        _exitBarrier.gameObject.SetActive(false);
 
         if (_checkPoint != null && _checkPoint.Trigger != null)
             _checkPoint.Trigger.OnPlayerEnterCheckPoint += OnPlayerEnterCheckPoint;
@@ -39,7 +42,7 @@ public class Room : MonoBehaviour
     private void OnEnable()
     {
         _introTrigger.OnPlayerTriggeredIntro += PlayRoomIntro;
-        _passTrigger.OnPlayerPassedRoom += DeactivateLasers;
+        _passTrigger.OnPlayerPassedRoom += OnPassedRoom;
 
         if(_director != null)
             _director.stopped += OnDirectorStopped;
@@ -48,7 +51,7 @@ public class Room : MonoBehaviour
     {
         _checkPoint.Trigger.OnPlayerEnterCheckPoint -= OnPlayerEnterCheckPoint;
         _introTrigger.OnPlayerTriggeredIntro -= PlayRoomIntro;
-        _passTrigger.OnPlayerPassedRoom -= DeactivateLasers;
+        _passTrigger.OnPlayerPassedRoom -= OnPassedRoom;
 
         if (_director != null)
             _director.stopped -= OnDirectorStopped;
@@ -56,13 +59,15 @@ public class Room : MonoBehaviour
     private void OnPlayerEnterCheckPoint()
     {
         _introTrigger.gameObject.SetActive(true);
-        _barrier.FadeOutBarrier();
+        _enterBarrier.FadeOutBarrier();
     }
     private void OnDirectorStopped(PlayableDirector director) => GameEvents.TriggerCinematicEnded();
-    private void DeactivateLasers()
+    private void OnPassedRoom()
     {
         foreach (var laser in _lasersList)
             laser.PlayLaserDeactivateSequence();
+
+        _exitBarrier.FadeInBarrier();
     }
     private void PlayRoomIntro()
     {
