@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3738722455745937836}
   - component: {fileID: 7196217651666492884}
   m_Layer: 0
-  m_Name: RoomPassTrigger
+  m_Name: PassTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

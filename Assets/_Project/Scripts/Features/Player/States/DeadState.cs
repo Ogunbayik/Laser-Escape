@@ -10,6 +10,7 @@ public class DeadState : IState
     public void EnterState()
     {
         _player.AnimationController.PlayDeadAnimation();
+        _player.AuraView.ToggleAura(false);
 
         HandleDeadEffect();
     }

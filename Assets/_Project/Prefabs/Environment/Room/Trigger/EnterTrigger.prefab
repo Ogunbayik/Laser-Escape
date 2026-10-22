@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 193565823951983035}
   - component: {fileID: 1707281795052022429}
   m_Layer: 0
-  m_Name: RoomEnterTrigger
+  m_Name: EnterTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

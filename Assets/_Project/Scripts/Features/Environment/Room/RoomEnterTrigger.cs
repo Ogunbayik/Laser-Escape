@@ -1,11 +1,8 @@
-using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
 public class RoomEnterTrigger : MonoBehaviour
 {
-    public event Action OnPlayerEnteredRoom;
-
     private bool _hasEntered = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -15,9 +12,15 @@ public class RoomEnterTrigger : MonoBehaviour
         if(other.gameObject.TryGetComponent<PlayerBase>(out PlayerBase player))
         {
             _hasEntered = true;
-            OnPlayerEnteredRoom?.Invoke();
-            gameObject.SetActive(false);
-            GameEvents.TriggerCinematicStarted();
+            player.AuraView.ToggleAura(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<PlayerBase>(out PlayerBase player))
+        {
+            _hasEntered = false;
+            player.AuraView.ToggleAura(false);
         }
     }
 }

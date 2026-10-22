@@ -15,7 +15,7 @@ public class Room : MonoBehaviour
 
 
     [Header("Trigger References")]
-    [SerializeField] private RoomEnterTrigger _enterTrigger;
+    [SerializeField] private RoomIntroTrigger _introTrigger;
     [SerializeField] private RoomPassTrigger _passTrigger;
 
 
@@ -31,37 +31,34 @@ public class Room : MonoBehaviour
     }
     public void Initialize()
     {
-        _enterTrigger.gameObject.SetActive(false);
+        _introTrigger.gameObject.SetActive(false);
 
         if (_checkPoint != null && _checkPoint.Trigger != null)
             _checkPoint.Trigger.OnPlayerEnterCheckPoint += OnPlayerEnterCheckPoint;
     }
     private void OnEnable()
     {
-        _enterTrigger.OnPlayerEnteredRoom += PlayerEnteredRoom;
-        _passTrigger.OnPlayerPassedRoom += PlayerPassedRoom;
-        
+        _introTrigger.OnPlayerTriggeredIntro += PlayRoomIntro;
+        _passTrigger.OnPlayerPassedRoom += DeactivateLasers;
 
         if(_director != null)
             _director.stopped += OnDirectorStopped;
     }
     private void OnDisable()
     {
-        _enterTrigger.OnPlayerEnteredRoom -= PlayerEnteredRoom;
-        _passTrigger.OnPlayerPassedRoom -= PlayerPassedRoom;
         _checkPoint.Trigger.OnPlayerEnterCheckPoint -= OnPlayerEnterCheckPoint;
+        _introTrigger.OnPlayerTriggeredIntro -= PlayRoomIntro;
+        _passTrigger.OnPlayerPassedRoom -= DeactivateLasers;
 
         if (_director != null)
             _director.stopped -= OnDirectorStopped;
     }
     private void OnPlayerEnterCheckPoint()
     {
-        _enterTrigger.gameObject.SetActive(true);
+        _introTrigger.gameObject.SetActive(true);
         _barrier.FadeOutBarrier();
     }
     private void OnDirectorStopped(PlayableDirector director) => GameEvents.TriggerCinematicEnded();
-    private void PlayerEnteredRoom() => PlayRoomIntro();
-    private void PlayerPassedRoom() => DeactivateLasers();
     private void DeactivateLasers()
     {
         foreach (var laser in _lasersList)
@@ -72,6 +69,7 @@ public class Room : MonoBehaviour
         if (_hasPlayedIntro)
             return;
 
+        GameEvents.TriggerCinematicStarted();
         _director.Play();
         _hasPlayedIntro = true;
     }

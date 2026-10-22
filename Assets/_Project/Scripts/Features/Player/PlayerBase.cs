@@ -13,6 +13,7 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
     [HideInInspector] public PlayerInput Input;
     [HideInInspector] public PlayerInteract Interact;
     [HideInInspector] public PlayerInteractView InteractView;
+    [HideInInspector] public PlayerAuraView AuraView;
     [HideInInspector] public PlayerAnimationController AnimationController;
 
     [Header("Data References")]
@@ -47,8 +48,10 @@ public class PlayerBase : MonoBehaviour, ILaserTargetable
         Rb = GetComponent<Rigidbody>();
         Input = GetComponent<PlayerInput>();
         Interact = GetComponentInChildren<PlayerInteract>();
-        InteractView = GetComponentInChildren<PlayerInteractView>();
         AnimationController = GetComponentInChildren<PlayerAnimationController>();
+
+        InteractView = GetComponentInChildren<PlayerInteractView>();
+        AuraView = GetComponentInChildren<PlayerAuraView>();
 
         StateController = new PlayerStateController();
         IdleState = new IdleState(this);
